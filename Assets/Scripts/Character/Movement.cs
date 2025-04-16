@@ -50,6 +50,11 @@ namespace RPG.Character
             agent.SetDestination(destination);
         }
 
+        public void StopMovingAgent()
+        {
+            agent.ResetPath();
+        }
+
     }
 
 }
