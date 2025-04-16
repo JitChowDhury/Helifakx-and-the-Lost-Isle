@@ -45,6 +45,16 @@ namespace RPG.Character
             transform.rotation = Quaternion.Lerp(startRotation, endRotation, Time.deltaTime * agent.angularSpeed);
         }
 
+        public void MoveAgentByDestination(Vector3 destination)
+        {
+            agent.SetDestination(destination);
+        }
+
+        public void StopMovingAgent()
+        {
+            agent.ResetPath();
+        }
+
     }
 
 }
