@@ -29,7 +29,7 @@ namespace RPG.Character
 
             Vector3 enemyPosition = transform.position;
             Vector3 playerPosition = player.transform.position;
-
+            //same as (enemyPosition-playerPosition).magnitude
             distanceFromPlayer = Vector3.Distance(enemyPosition, playerPosition);
         }
 
