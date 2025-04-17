@@ -10,7 +10,8 @@ namespace RPG.Character
     {
         private NavMeshAgent agent;
         private Vector3 movementVector;
-
+        public float walkSpeed = 2f;//added
+        public float runSpeed = 3f;//added
 
         void Awake()
         {
@@ -33,6 +34,22 @@ namespace RPG.Character
         {
             Vector2 input = context.ReadValue<Vector2>();
             movementVector = new Vector3(input.x, 0, input.y);
+
+        }
+
+        public void HandleRun(InputAction.CallbackContext context)//added
+        {
+            if (context.started)
+            {
+                agent.speed = runSpeed;
+                Debug.Log("Running");
+            }
+            if (context.canceled)
+            {
+                agent.speed = walkSpeed;
+                Debug.Log("Walking");
+
+            }
 
         }
 
@@ -68,6 +85,11 @@ namespace RPG.Character
         public void MoveAgentByOffset(Vector3 offset)
         {
             agent.Move(offset);
+        }
+
+        public void UpdateAgentSpeed(float newSpeed)
+        {
+            agent.speed = newSpeed;
         }
 
     }

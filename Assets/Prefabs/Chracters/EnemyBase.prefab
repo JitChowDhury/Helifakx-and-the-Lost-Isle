@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 6059335919454518270}
   - component: {fileID: 7884841205785497809}
   - component: {fileID: 1436786569876895248}
+  - component: {fileID: 2739883836332679132}
+  - component: {fileID: -2749601469250502664}
   m_Layer: 0
   m_Name: EnemyBase
   m_TagString: Untagged
@@ -68,6 +70,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9989672f06f5f2947b223d0241141025, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  walkSpeed: 2
+  runSpeed: 3
 --- !u!114 &1436786569876895248
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -78,5 +82,32 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1cb17723ebb1e0445a5cbfa789528b6b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  chaseRange: 2.5
+  attackRange: 0.75
+  stats: {fileID: 0}
+--- !u!114 &2739883836332679132
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1657697107607792581}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe9794845e1542b45854f52ccad60562, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &-2749601469250502664
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1657697107607792581}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93762d645c30ce74baf73f75387ff58d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
