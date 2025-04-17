@@ -48,9 +48,7 @@ public class Patrol : MonoBehaviour
             {
                 return;
             }
-            pauseTime = 0f;
-            walkTime = 0f;
-            isWalking = true;
+            ResetTimers();
         }
         lengthWalked += Time.deltaTime * agent.speed;
         if (lengthWalked > splineLength)
@@ -58,5 +56,12 @@ public class Patrol : MonoBehaviour
             lengthWalked = 0f;
         }
         splinePosition = Mathf.Clamp01(lengthWalked / splineLength);
+    }
+
+    public void ResetTimers()
+    {
+        pauseTime = 0f;
+        walkTime = 0f;
+        isWalking = true;
     }
 }
