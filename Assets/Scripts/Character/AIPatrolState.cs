@@ -1,3 +1,5 @@
+using UnityEngine;
+
 namespace RPG.Character
 {
     public class AIPatrolState : AIBaseState
@@ -14,6 +16,13 @@ namespace RPG.Character
                 enemy.SwitchState(enemy.chaseState);
                 return;
             }
+
+            enemy.patrolCmp.CalculateNextPosition();
+            Vector3 currentPosition = enemy.transform.position;
+            Vector3 newPosition = enemy.patrolCmp.GetNextPosition();
+            Vector3 offset = newPosition - currentPosition;
+
+            enemy.movementCMP.MoveAgentByOffset(offset);
         }
 
 

@@ -65,6 +65,11 @@ namespace RPG.Character
             return true;
         }
 
+        public void MoveAgentByOffset(Vector3 offset)
+        {
+            agent.Move(offset);
+        }
+
     }
 
 }
