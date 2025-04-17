@@ -116,6 +116,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1436786569876895248, guid: e7aeca567016e4a44ab57e53862608b3, type: 3}
+      propertyPath: stats
+      value: 
+      objectReference: {fileID: 11400000, guid: 251b99ead14dac54280b4d2172dcc301, type: 2}
     - target: {fileID: 1657697107607792581, guid: e7aeca567016e4a44ab57e53862608b3, type: 3}
       propertyPath: m_Name
       value: Enemy Patrol Guard
@@ -201,3 +205,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac8c80dca2426294f873ecc8d26ce87d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  splineGameobject: {fileID: 0}
+  walkDuration: 3
+  pauseDuration: 2

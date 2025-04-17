@@ -12,8 +12,11 @@ namespace RPG.Character
         [NonSerialized] public Movement movementCMP;
         [NonSerialized] public GameObject player;
         [NonSerialized] public Patrol patrolCmp;
+        private Health healthCmp;
+        private Combat combatCmp;
         public float chaseRange = 2.5f;
         public float attackRange = 0.75f;
+        public CharacterStatsSO stats;
 
         private AIBaseState currentState;
         public AIReturnState returnState = new AIReturnState();
@@ -23,16 +26,25 @@ namespace RPG.Character
 
         void Awake()
         {
+            if (stats == null)
+            {
+                Debug.LogWarning($"{name} does not have stats");
+            }
+
             originalPosition = transform.position;
             currentState = returnState;
             player = GameObject.FindWithTag(Constants.PLAYER_TAG);
             movementCMP = GetComponent<Movement>();
             patrolCmp = GetComponent<Patrol>();
+            healthCmp = GetComponent<Health>();
+            combatCmp = GetComponent<Combat>();
         }
 
         void Start()
         {
             currentState.EnterState(this);
+            healthCmp.healthPoints = stats.health;
+            combatCmp.damage = stats.damage;
         }
 
 

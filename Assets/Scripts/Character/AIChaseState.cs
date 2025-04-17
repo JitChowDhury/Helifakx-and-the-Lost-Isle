@@ -4,8 +4,10 @@ namespace RPG.Character
 {
     public class AIChaseState : AIBaseState
     {
+
         public override void EnterState(EnemyController enemy)
         {
+            enemy.movementCMP.UpdateAgentSpeed(enemy.stats.runSpeed);
             UnityEngine.Debug.Log("started chasing");
         }
 

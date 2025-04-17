@@ -6,7 +6,7 @@ public class AIReturnState : AIBaseState
     private Vector3 targetPosition;
     public override void EnterState(EnemyController enemy)
     {
-
+        enemy.movementCMP.UpdateAgentSpeed(enemy.stats.walkSpeed);
         if (enemy.patrolCmp != null)
         {
             targetPosition = enemy.patrolCmp.GetNextPosition();
