@@ -1,4 +1,5 @@
 using System.Diagnostics;
+using UnityEngine;
 
 namespace RPG.Character
 {
@@ -26,6 +27,9 @@ namespace RPG.Character
                 return;
             }
             enemy.movementCMP.MoveAgentByDestination(enemy.player.transform.position);
+
+            Vector3 playerDirection = enemy.player.transform.position - enemy.transform.position;
+            enemy.movementCMP.Rotate(playerDirection);
         }
     }
 }

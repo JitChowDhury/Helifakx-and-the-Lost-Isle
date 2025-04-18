@@ -2,6 +2,9 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.AI;
 using Unity.Mathematics;
+using RPG.Utility;
+using UnityEngine.EventSystems;
+using System;
 
 namespace RPG.Character
 {
@@ -12,16 +15,21 @@ namespace RPG.Character
         private Vector3 movementVector;
         public float walkSpeed = 2f;//added
         public float runSpeed = 3f;//added
+        [NonSerialized] public Vector3 originalForwardVector;
 
         void Awake()
         {
             agent = GetComponent<NavMeshAgent>();
+            originalForwardVector = transform.forward;
         }
-
+        void Start()
+        {
+            agent.updateRotation = false;
+        }
         void Update()
         {
             MovePlayer();
-            Rotate();
+            if (CompareTag(Constants.PLAYER_TAG)) Rotate(movementVector);
         }
 
         private void MovePlayer()
@@ -53,11 +61,11 @@ namespace RPG.Character
 
         }
 
-        private void Rotate()
+        public void Rotate(Vector3 newMovementVector)
         {
-            if (movementVector == Vector3.zero) return;
+            if (newMovementVector == Vector3.zero) return;
             Quaternion startRotation = transform.rotation;
-            Quaternion endRotation = Quaternion.LookRotation(movementVector);
+            Quaternion endRotation = Quaternion.LookRotation(newMovementVector);
 
             transform.rotation = Quaternion.Lerp(startRotation, endRotation, Time.deltaTime * agent.angularSpeed);
         }
