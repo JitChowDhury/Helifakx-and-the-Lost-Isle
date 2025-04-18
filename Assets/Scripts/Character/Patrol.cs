@@ -66,6 +66,7 @@ public class Patrol : MonoBehaviour
     }
     public Vector3 GetFartherDistance()
     {
+        //for better rotation
         float tempSplinePosition = splinePosition + 0.02f;
         if (tempSplinePosition >= 1)
         {
