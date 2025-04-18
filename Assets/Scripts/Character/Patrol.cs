@@ -64,4 +64,13 @@ public class Patrol : MonoBehaviour
         walkTime = 0f;
         isWalking = true;
     }
+    public Vector3 GetFartherDistance()
+    {
+        float tempSplinePosition = splinePosition + 0.02f;
+        if (tempSplinePosition >= 1)
+        {
+            tempSplinePosition -= 1;
+        }
+        return splineCmp.EvaluatePosition(tempSplinePosition);
+    }
 }

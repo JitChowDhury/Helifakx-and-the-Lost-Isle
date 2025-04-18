@@ -4,6 +4,7 @@ using UnityEngine.AI;
 using Unity.Mathematics;
 using RPG.Utility;
 using UnityEngine.EventSystems;
+using System;
 
 namespace RPG.Character
 {
@@ -14,12 +15,17 @@ namespace RPG.Character
         private Vector3 movementVector;
         public float walkSpeed = 2f;//added
         public float runSpeed = 3f;//added
+        [NonSerialized] public Vector3 originalForwardVector;
 
         void Awake()
         {
             agent = GetComponent<NavMeshAgent>();
+            originalForwardVector = transform.forward;
         }
-
+        void Start()
+        {
+            agent.updateRotation = false;
+        }
         void Update()
         {
             MovePlayer();

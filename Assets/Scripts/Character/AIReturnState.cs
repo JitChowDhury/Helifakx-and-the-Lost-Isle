@@ -37,6 +37,10 @@ public class AIReturnState : AIBaseState
                 enemy.SwitchState(enemy.patrolState);
                 return;
             }
+            else
+            {
+                enemy.movementCMP.Rotate(enemy.movementCMP.originalForwardVector);
+            }
         }
         else
         {
