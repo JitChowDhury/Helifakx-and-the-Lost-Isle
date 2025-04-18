@@ -2,6 +2,8 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.AI;
 using Unity.Mathematics;
+using RPG.Utility;
+using UnityEngine.EventSystems;
 
 namespace RPG.Character
 {
@@ -21,7 +23,7 @@ namespace RPG.Character
         void Update()
         {
             MovePlayer();
-            Rotate();
+            if (CompareTag(Constants.PLAYER_TAG)) Rotate(movementVector);
         }
 
         private void MovePlayer()
@@ -53,11 +55,11 @@ namespace RPG.Character
 
         }
 
-        private void Rotate()
+        public void Rotate(Vector3 newMovementVector)
         {
-            if (movementVector == Vector3.zero) return;
+            if (newMovementVector == Vector3.zero) return;
             Quaternion startRotation = transform.rotation;
-            Quaternion endRotation = Quaternion.LookRotation(movementVector);
+            Quaternion endRotation = Quaternion.LookRotation(newMovementVector);
 
             transform.rotation = Quaternion.Lerp(startRotation, endRotation, Time.deltaTime * agent.angularSpeed);
         }

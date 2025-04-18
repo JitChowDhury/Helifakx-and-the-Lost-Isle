@@ -28,13 +28,35 @@ public class AIReturnState : AIBaseState
             return;
         }
 
-        if (enemy.patrolCmp != null)
+
+
+        if (enemy.movementCMP.ReachedDestination())
         {
-            if (enemy.movementCMP.ReachedDestination())
+            if (enemy.patrolCmp != null)
             {
                 enemy.SwitchState(enemy.patrolState);
                 return;
             }
         }
+        else
+        {
+            if (enemy.patrolCmp != null)
+            {
+                Vector3 lookTowardsVector = targetPosition - enemy.transform.position;
+                lookTowardsVector.y = 0;
+                enemy.movementCMP.Rotate(lookTowardsVector);
+            }
+            else
+            {
+                Debug.Log(enemy.originalPosition);
+                Vector3 lookTowardsVector = enemy.originalPosition - enemy.transform.position;
+                lookTowardsVector.y = 0;
+                enemy.movementCMP.Rotate(lookTowardsVector);
+            }
+        }
+
+
+
+
     }
 }
