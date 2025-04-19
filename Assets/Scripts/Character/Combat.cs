@@ -9,10 +9,19 @@ namespace RPG.Character
     {
         [NonSerialized] public float damage = 0f;
         private Animator animator;
+        private BubbleEvent bubbleEvent;
 
         void Awake()
         {
             animator = GetComponentInChildren<Animator>();
+            bubbleEvent = GetComponentInChildren<BubbleEvent>();
+
+        }
+        void OnEnable()
+        {
+            bubbleEvent.OnBubbleStartAttack += HadleBubbleStartAttack;
+            bubbleEvent.OnBubbleEndAttack += HandleBubbleCompleteAttack;
+
 
         }
 
@@ -20,16 +29,21 @@ namespace RPG.Character
         {
             if (!context.performed) return;
             StartAttack();
-            
-
-            
-
         }
 
         private void StartAttack()
         {
             animator.SetFloat(Constants.SPEED_ANIMATOR_PARAM, 0);
             animator.SetTrigger(Constants.ATTACK_ANIMATOR_PARAM);
+        }
+        private void HadleBubbleStartAttack()
+        {
+            print("Start attack");
+        }
+
+        private void HandleBubbleCompleteAttack()
+        {
+            print("Complete attack");
         }
     }
 
