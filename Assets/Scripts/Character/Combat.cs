@@ -19,11 +19,11 @@ namespace RPG.Character
         }
         void OnEnable()
         {
-            bubbleEvent.OnBubbleStartAttack += HadleBubbleStartAttack;
+            bubbleEvent.OnBubbleStartAttack += HandleBubbleStartAttack;
             bubbleEvent.OnBubbleEndAttack += HandleBubbleCompleteAttack;
 
 
-        }
+        } 
 
         public void HandleAttack(InputAction.CallbackContext context)
         {
@@ -36,7 +36,7 @@ namespace RPG.Character
             animator.SetFloat(Constants.SPEED_ANIMATOR_PARAM, 0);
             animator.SetTrigger(Constants.ATTACK_ANIMATOR_PARAM);
         }
-        private void HadleBubbleStartAttack()
+        private void HandleBubbleStartAttack()
         {
             print("Start attack");
         }
