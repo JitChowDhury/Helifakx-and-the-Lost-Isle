@@ -17,6 +17,7 @@ namespace RPG.Character
                 return;
             }
 
+            Vector3 oldPosition = enemy.patrolCmp.GetNextPosition();
             enemy.patrolCmp.CalculateNextPosition();
             Vector3 currentPosition = enemy.transform.position;
             Vector3 newPosition = enemy.patrolCmp.GetNextPosition();
@@ -29,6 +30,10 @@ namespace RPG.Character
             Vector3 rotateTowardVector = fartherOutPosition - currentPosition;
             rotateTowardVector.y = 0;
             enemy.movementCMP.Rotate(rotateTowardVector);
+            if (oldPosition == newPosition)
+            {
+                enemy.movementCMP.isMoving = false;
+            }
         }
 
 

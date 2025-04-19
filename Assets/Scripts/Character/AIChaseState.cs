@@ -10,6 +10,7 @@ namespace RPG.Character
         {
             enemy.movementCMP.UpdateAgentSpeed(enemy.stats.runSpeed);
             UnityEngine.Debug.Log("started chasing");
+            enemy.movementCMP.isRunning = true;
         }
 
         public override void UpdateState(EnemyController enemy)

@@ -6,6 +6,7 @@ public class AIReturnState : AIBaseState
     private Vector3 targetPosition;
     public override void EnterState(EnemyController enemy)
     {
+        enemy.movementCMP.isRunning = false;
         enemy.movementCMP.UpdateAgentSpeed(enemy.stats.walkSpeed);
         if (enemy.patrolCmp != null)
         {
@@ -32,6 +33,7 @@ public class AIReturnState : AIBaseState
 
         if (enemy.movementCMP.ReachedDestination())
         {
+
             if (enemy.patrolCmp != null)
             {
                 enemy.SwitchState(enemy.patrolState);
@@ -40,6 +42,7 @@ public class AIReturnState : AIBaseState
             else
             {
                 enemy.movementCMP.Rotate(enemy.movementCMP.originalForwardVector);
+                enemy.movementCMP.isMoving = false;
             }
         }
         else
