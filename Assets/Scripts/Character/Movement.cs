@@ -86,6 +86,7 @@ namespace RPG.Character
         public void MoveAgentByDestination(Vector3 destination)
         {
             agent.SetDestination(destination);
+            isMoving = true;
         }
 
         public void StopMovingAgent()
@@ -106,6 +107,7 @@ namespace RPG.Character
         public void MoveAgentByOffset(Vector3 offset)
         {
             agent.Move(offset);
+            isMoving = true;
         }
 
         public void UpdateAgentSpeed(float newSpeed)
