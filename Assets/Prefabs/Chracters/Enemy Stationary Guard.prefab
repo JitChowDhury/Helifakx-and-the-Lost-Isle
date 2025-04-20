@@ -725,15 +725,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2140993235650985819, guid: e7aeca567016e4a44ab57e53862608b3, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 3.0961633
       objectReference: {fileID: 0}
     - target: {fileID: 2140993235650985819, guid: e7aeca567016e4a44ab57e53862608b3, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 2.27
       objectReference: {fileID: 0}
     - target: {fileID: 2140993235650985819, guid: e7aeca567016e4a44ab57e53862608b3, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -3.7223854
       objectReference: {fileID: 0}
     - target: {fileID: 2140993235650985819, guid: e7aeca567016e4a44ab57e53862608b3, type: 3}
       propertyPath: m_LocalRotation.w
@@ -741,15 +741,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2140993235650985819, guid: e7aeca567016e4a44ab57e53862608b3, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 2140993235650985819, guid: e7aeca567016e4a44ab57e53862608b3, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 2140993235650985819, guid: e7aeca567016e4a44ab57e53862608b3, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 2140993235650985819, guid: e7aeca567016e4a44ab57e53862608b3, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -766,7 +766,7 @@ PrefabInstance:
     - target: {fileID: 4285777564996349563, guid: e7aeca567016e4a44ab57e53862608b3, type: 3}
       propertyPath: m_Controller
       value: 
-      objectReference: {fileID: 9100000, guid: d80128855300147439482fb28c944aad, type: 2}
+      objectReference: {fileID: 9100000, guid: 67f9b88af20f8f749a4b0ae8a5d58fd9, type: 2}
     - target: {fileID: 6059335919454518270, guid: e7aeca567016e4a44ab57e53862608b3, type: 3}
       propertyPath: m_Height
       value: 0.6

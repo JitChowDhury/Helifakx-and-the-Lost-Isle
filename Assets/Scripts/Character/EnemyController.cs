@@ -12,8 +12,8 @@ namespace RPG.Character
         [NonSerialized] public Movement movementCMP;
         [NonSerialized] public GameObject player;
         [NonSerialized] public Patrol patrolCmp;
+        [NonSerialized] public Combat combatCmp;
         private Health healthCmp;
-        private Combat combatCmp;
         public float chaseRange = 2.5f;
         public float attackRange = 0.75f;
         public CharacterStatsSO stats;

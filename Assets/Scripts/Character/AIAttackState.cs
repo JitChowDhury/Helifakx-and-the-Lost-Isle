@@ -12,10 +12,13 @@ namespace RPG.Character
 
             if (enemy.distanceFromPlayer > enemy.attackRange)
             {
+                enemy.combatCmp.CancelAttack();
                 enemy.SwitchState(enemy.chaseState);
                 return;
             }
-            UnityEngine.Debug.Log("Attacking");
+
+            enemy.combatCmp.StartAttack();
+            enemy.transform.LookAt(enemy.player.transform);
 
         }
 

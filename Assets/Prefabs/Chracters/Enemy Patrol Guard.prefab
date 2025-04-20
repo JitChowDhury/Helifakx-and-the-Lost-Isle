@@ -721,15 +721,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2140993235650985819, guid: e7aeca567016e4a44ab57e53862608b3, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 5.866232
       objectReference: {fileID: 0}
     - target: {fileID: 2140993235650985819, guid: e7aeca567016e4a44ab57e53862608b3, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 2.5
       objectReference: {fileID: 0}
     - target: {fileID: 2140993235650985819, guid: e7aeca567016e4a44ab57e53862608b3, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 4.74493
       objectReference: {fileID: 0}
     - target: {fileID: 2140993235650985819, guid: e7aeca567016e4a44ab57e53862608b3, type: 3}
       propertyPath: m_LocalRotation.w
@@ -737,15 +737,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2140993235650985819, guid: e7aeca567016e4a44ab57e53862608b3, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 2140993235650985819, guid: e7aeca567016e4a44ab57e53862608b3, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 2140993235650985819, guid: e7aeca567016e4a44ab57e53862608b3, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 2140993235650985819, guid: e7aeca567016e4a44ab57e53862608b3, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -812,8 +812,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   splineGameobject: {fileID: 0}
-  walkDuration: 3
-  pauseDuration: 2
+  walkDuration: 2
+  pauseDuration: 1
 --- !u!4 &5486317688723669368 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5173192965255878485, guid: e7aeca567016e4a44ab57e53862608b3, type: 3}
