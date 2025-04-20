@@ -9,13 +9,20 @@ namespace RPG.Character
 
         public override void UpdateState(EnemyController enemy)
         {
-
+            if (enemy.player == null)
+            {
+                enemy.combatCmp.CancelAttack();
+                return;
+            }
             if (enemy.distanceFromPlayer > enemy.attackRange)
             {
+                enemy.combatCmp.CancelAttack();
                 enemy.SwitchState(enemy.chaseState);
                 return;
             }
-            UnityEngine.Debug.Log("Attacking");
+
+            enemy.combatCmp.StartAttack();
+            enemy.transform.LookAt(enemy.player.transform);
 
         }
 

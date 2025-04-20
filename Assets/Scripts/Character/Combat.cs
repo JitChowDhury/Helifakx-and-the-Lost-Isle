@@ -42,11 +42,15 @@ namespace RPG.Character
 
         }
 
-        private void StartAttack()
+        public void StartAttack()
         {
             if (isAttacking) return;
             animator.SetFloat(Constants.SPEED_ANIMATOR_PARAM, 0);
             animator.SetTrigger(Constants.ATTACK_ANIMATOR_PARAM);
+        }
+        public void CancelAttack()
+        {
+            animator.ResetTrigger(Constants.ATTACK_ANIMATOR_PARAM);
         }
         private void HandleBubbleStartAttack()
         {
