@@ -8,6 +8,7 @@ namespace RPG.Utility
         public event UnityAction OnBubbleEndAttack = () => { };
 
         public event UnityAction OnBubbleHit = () => { };
+        public event UnityAction OnBubbleCompleteHit = () => { };
 
         private void OnStartAttack()
         {
@@ -22,6 +23,11 @@ namespace RPG.Utility
         private void OnHit()
         {
             OnBubbleHit.Invoke();
+        }
+
+        private void OnCompleteDefeat()
+        {
+            OnBubbleCompleteHit.Invoke();
         }
     }
 }

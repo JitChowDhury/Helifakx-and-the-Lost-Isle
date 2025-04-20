@@ -23,6 +23,7 @@ namespace RPG.Character
         public AIChaseState chaseState = new AIChaseState();
         public AIAttackState attackState = new AIAttackState();
         public AIPatrolState patrolState = new AIPatrolState();
+        public AIDefeatedState defeatedState = new AIDefeatedState();
 
         void Awake()
         {
@@ -38,6 +39,7 @@ namespace RPG.Character
             patrolCmp = GetComponent<Patrol>();
             healthCmp = GetComponent<Health>();
             combatCmp = GetComponent<Combat>();
+
         }
 
         void Start()
@@ -45,6 +47,15 @@ namespace RPG.Character
             currentState.EnterState(this);
             healthCmp.healthPoints = stats.health;
             combatCmp.damage = stats.damage;
+        }
+
+        void OnEnable()
+        {
+            healthCmp.OnStartDefeated += HandleStartDefeated;
+        }
+        void OnDisable()
+        {
+            healthCmp.OnStartDefeated -= HandleStartDefeated;
         }
 
 
@@ -78,7 +89,11 @@ namespace RPG.Character
             Gizmos.DrawWireSphere(transform.position, chaseRange);
 
         }
-
+        private void HandleStartDefeated()
+        {
+            SwitchState(defeatedState);
+            currentState.EnterState(this);
+        }
 
 
 
