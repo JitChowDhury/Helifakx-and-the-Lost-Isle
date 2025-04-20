@@ -4,8 +4,10 @@ namespace RPG.Utility
 {
     public class BubbleEvent : MonoBehaviour
     {
-        public UnityAction OnBubbleStartAttack = () => { };//lambda expression
-        public UnityAction OnBubbleEndAttack = () => { };
+        public event UnityAction OnBubbleStartAttack = () => { };//lambda expression
+        public event UnityAction OnBubbleEndAttack = () => { };
+
+        public event UnityAction OnBubbleHit = () => { };
 
         private void OnStartAttack()
         {
@@ -15,6 +17,11 @@ namespace RPG.Utility
         private void OnEndAttack()
         {
             OnBubbleEndAttack.Invoke();
+        }
+
+        private void OnHit()
+        {
+            OnBubbleHit.Invoke();
         }
     }
 }
