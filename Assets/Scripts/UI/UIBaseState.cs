@@ -1,16 +1,18 @@
-using UnityEngine;
-
-public class UIBaseState : MonoBehaviour
+namespace RPG.UI
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+
+    public abstract class UIBaseState
     {
-        
+        public UIController controller;
+
+        public UIBaseState(UIController uI)
+        {
+            controller = uI;
+        }
+
+        public abstract void EnterState();
+    public abstract void SelectButton();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+
 }
