@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using RPG.UI;
 using UnityEngine;
 using UnityEngine.UIElements;
@@ -8,7 +9,8 @@ public class UIController : MonoBehaviour
     public UIMainMenuState mainMenuState;
 
     private UIDocument uIDocumentCmp;
-    private VisualElement root;
+    public VisualElement root;
+    public List<Button> buttons;
 
     void Awake()
     {
