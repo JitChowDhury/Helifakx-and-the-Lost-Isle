@@ -1,6 +1,12 @@
 <engine:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:engine="UnityEngine.UIElements" xmlns:editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <Style src="project://database/Assets/UI/Global%20StyleSheet.uss?fileID=7433441132597879392&amp;guid=18151860f1103904cad149a5e4beaf0e&amp;type=3#Global StyleSheet" />
-    <engine:VisualElement class="primary-container">
-        <engine:Label text="HELIFAKX And The LOST ISLE" class="base-text" style="font-size: 80px; -unity-text-align: upper-center;" />
+    <engine:VisualElement name="main-menu-container" class="center" style="flex-grow: 0;">
+        <engine:VisualElement name="box" class="primary-container" style="border-left-color: rgb(60, 147, 180); border-right-color: rgb(60, 147, 180); border-top-color: rgb(60, 147, 180); border-bottom-color: rgb(60, 147, 180);">
+            <engine:Label text="HELIFAKX And The LOST ISLE" class="base-text" style="font-size: 80px; -unity-text-align: upper-center;" />
+            <engine:VisualElement name="buttons" style="flex-grow: 0; position: absolute; left: 0; bottom: -50px; width: 100%; flex-direction: row; justify-content: center;">
+                <engine:Button text="START&#10;" name="start-button" class="menu-button" />
+            </engine:VisualElement>
+            <engine:VisualElement style="flex-grow: 0; background-image: url(&quot;project://database/Assets/Game%20Assets/Sprites/Bombs.png?fileID=2800000&amp;guid=4420e8d6e00706f4f84dad51b2169cb1&amp;type=3#Bombs&quot;); width: 332px; height: 174px; position: absolute; top: -150px; left: 377px;" />
+        </engine:VisualElement>
     </engine:VisualElement>
 </engine:UXML>
