@@ -20,6 +20,6 @@ public class UIMainMenuState : UIBaseState
 
     public override void SelectButton()
     {
-
+        Button btn = controller.buttons[controller.currentSelection];
     }
 }
