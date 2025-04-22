@@ -52,5 +52,34 @@
 }
 
 .active {
-    background-color: rgb(169, 206, 48);
+    background-color: rgb(0, 121, 107);
+}
+
+.stat-container {
+    flex-grow: 0;
+    flex-direction: row;
+    margin-right: 20px;
+}
+
+.stat-name {
+    background-color: rgb(0, 255, 231);
+    -unity-font-definition: url("project://database/Assets/Game%20Assets/Fonts/VarelaRound-Regular.ttf?fileID=12800000&guid=3bc3b6a4cfe6f22449939be03b42bfba&type=3#VarelaRound-Regular");
+    -unity-font-style: bold;
+    font-size: 30px;
+    color: rgb(0, 0, 0);
+    padding-top: 15px;
+    padding-right: 15px;
+    padding-bottom: 15px;
+    padding-left: 15px;
+    margin-top: 0;
+    margin-right: 0;
+    margin-bottom: 0;
+    margin-left: 0;
+}
+
+.stat-value {
+    margin-top: 0;
+    margin-right: 0;
+    margin-bottom: 0;
+    margin-left: 0;
 }
