@@ -15,6 +15,7 @@ public class UIMainMenuState : UIBaseState
     public override void EnterState()
     {
         controller.buttons = controller.root.Query<Button>(null, "menu-button").ToList();
+        controller.buttons[0].AddToClassList("active");
         Debug.Log(controller.buttons.Count);
     }
 

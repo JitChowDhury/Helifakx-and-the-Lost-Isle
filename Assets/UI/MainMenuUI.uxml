@@ -5,7 +5,6 @@
             <engine:Label text="HELIFAKX And The LOST ISLE" class="base-text" style="font-size: 80px; -unity-text-align: upper-center;" />
             <engine:VisualElement name="buttons" style="flex-grow: 0; position: absolute; left: 0; bottom: -50px; width: 100%; flex-direction: row; justify-content: center;">
                 <engine:Button text="START&#10;" name="start-button" class="menu-button" />
-                <engine:Button text="Button" name="temp-button" class="menu-button" />
             </engine:VisualElement>
             <engine:VisualElement style="flex-grow: 0; background-image: url(&quot;project://database/Assets/Game%20Assets/Sprites/Bombs.png?fileID=2800000&amp;guid=4420e8d6e00706f4f84dad51b2169cb1&amp;type=3#Bombs&quot;); width: 332px; height: 174px; position: absolute; top: -150px; left: 377px;" />
         </engine:VisualElement>

@@ -37,9 +37,14 @@ public class UIController : MonoBehaviour
     public void HandleNavigate(InputAction.CallbackContext context)
     {
         if (!context.performed) return;
+        buttons[currentSelection].RemoveFromClassList("active");
+
+
         Vector2 input = context.ReadValue<Vector2>();
-        currentSelection+=input.x>0?1:-1;
-        currentSelection = Mathf.Clamp(currentSelection,0,buttons.Count-1);
+        currentSelection += input.x > 0 ? 1 : -1;
+        currentSelection = Mathf.Clamp(currentSelection, 0, buttons.Count - 1);
+        buttons[currentSelection].AddToClassList("active");
+
     }
 
 

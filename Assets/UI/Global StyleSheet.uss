@@ -50,3 +50,7 @@
     border-bottom-right-radius: 20px;
     border-bottom-left-radius: 20px;
 }
+
+.active {
+    background-color: rgb(169, 206, 48);
+}
