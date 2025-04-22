@@ -1,3 +1,4 @@
+using RPG.Core;
 using RPG.UI;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -22,5 +23,9 @@ public class UIMainMenuState : UIBaseState
     public override void SelectButton()
     {
         Button btn = controller.buttons[controller.currentSelection];
+        if (btn.name == "start-button")
+        {
+            SceneTransition.Initiate(1);
+        }
     }
 }
