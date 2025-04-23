@@ -17,6 +17,7 @@ public class UIController : MonoBehaviour
     public VisualElement mainMenuContainer;
     public VisualElement playerInfoContainer;
     public Label healthLabel;
+    public Label potionLabel;
     public List<Button> buttons;
     public int currentSelection = 0;
 
@@ -28,6 +29,7 @@ public class UIController : MonoBehaviour
         playerInfoContainer = root.Q<VisualElement>("player-info-container");
         mainMenuContainer = root.Q<VisualElement>("main-menu-container");
         healthLabel = playerInfoContainer.Q<Label>("health-label");
+        potionLabel = playerInfoContainer.Q<Label>("potions-label");
 
 
     }
@@ -51,11 +53,13 @@ public class UIController : MonoBehaviour
     void OnEnable()
     {
         EventManager.OnChangePlayerHealth += HandleChangePlayerHealth;
+        EventManager.OnChangePotionsCount += HandleChangePotionCount;
     }
 
     void OnDisable()
     {
         EventManager.OnChangePlayerHealth -= HandleChangePlayerHealth;
+        EventManager.OnChangePotionsCount += HandleChangePotionCount;
 
     }
     public void HandleInteract(InputAction.CallbackContext context)
@@ -82,5 +86,9 @@ public class UIController : MonoBehaviour
         healthLabel.text = newHealthPoints.ToString();
     }
 
+    private void HandleChangePotionCount(int newPotionCount)
+    {
+        potionLabel.text = newPotionCount.ToString();
+    }
 
 }

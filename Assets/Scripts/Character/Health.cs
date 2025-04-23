@@ -4,6 +4,7 @@ using RPG.Utility;
 using Unity.Burst.CompilerServices;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.InputSystem;
 namespace RPG.Character
 {
     public class Health : MonoBehaviour
@@ -15,12 +16,20 @@ namespace RPG.Character
 
         private Animator animatorCmp;
 
+        [SerializeField] private int potionCount = 1;
+        [SerializeField] private float healAmount = 15f;
+
         void Awake()
         {
             bubbleEventCmp = GetComponentInChildren<BubbleEvent>();
             animatorCmp = GetComponentInChildren<Animator>();
         }
 
+        void Start()
+        {
+            if(CompareTag(Constants.PLAYER_TAG))
+            EventManager.RaiseChangePotionCount(potionCount);
+        }
         void OnEnable()
         {
             bubbleEventCmp.OnBubbleCompleteHit += HandleBubbleCompleteDefeat;
@@ -59,6 +68,17 @@ namespace RPG.Character
         {
             Destroy(gameObject);
         }
+
+        public void HandleHeal(InputAction.CallbackContext context)
+        {
+            if (!context.performed || potionCount == 0) return;
+
+            potionCount--;
+            EventManager.RaiseChangePotionCount(potionCount);
+            healthPoints += healAmount;
+            EventManager.RaiseChangePlayerHealth(healthPoints);
+        }
+
 
 
     }
