@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using RPG.Core;
 using RPG.UI;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -15,6 +16,8 @@ public class UIController : MonoBehaviour
 
     public VisualElement mainMenuContainer;
     public VisualElement playerInfoContainer;
+    public Label healthLabel;
+    public Label potionLabel;
     public List<Button> buttons;
     public int currentSelection = 0;
 
@@ -25,6 +28,8 @@ public class UIController : MonoBehaviour
         root = uIDocumentCmp.rootVisualElement;
         playerInfoContainer = root.Q<VisualElement>("player-info-container");
         mainMenuContainer = root.Q<VisualElement>("main-menu-container");
+        healthLabel = playerInfoContainer.Q<Label>("health-label");
+        potionLabel = playerInfoContainer.Q<Label>("potions-label");
 
 
     }
@@ -42,6 +47,19 @@ public class UIController : MonoBehaviour
             playerInfoContainer.style.display = DisplayStyle.Flex;
         }
 
+
+    }
+
+    void OnEnable()
+    {
+        EventManager.OnChangePlayerHealth += HandleChangePlayerHealth;
+        EventManager.OnChangePotionsCount += HandleChangePotionCount;
+    }
+
+    void OnDisable()
+    {
+        EventManager.OnChangePlayerHealth -= HandleChangePlayerHealth;
+        EventManager.OnChangePotionsCount += HandleChangePotionCount;
 
     }
     public void HandleInteract(InputAction.CallbackContext context)
@@ -63,5 +81,14 @@ public class UIController : MonoBehaviour
 
     }
 
+    private void HandleChangePlayerHealth(float newHealthPoints)
+    {
+        healthLabel.text = newHealthPoints.ToString();
+    }
+
+    private void HandleChangePotionCount(int newPotionCount)
+    {
+        potionLabel.text = newPotionCount.ToString();
+    }
 
 }

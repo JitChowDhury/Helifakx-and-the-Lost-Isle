@@ -47,6 +47,11 @@ namespace RPG.Character
             currentState.EnterState(this);
             healthCmp.healthPoints = stats.health;
             combatCmp.damage = stats.damage;
+            if (healthCmp.sliderCmp != null)
+            {
+                healthCmp.sliderCmp.maxValue = stats.health;
+                healthCmp.sliderCmp.value = stats.health;
+            }
         }
 
         void OnEnable()
