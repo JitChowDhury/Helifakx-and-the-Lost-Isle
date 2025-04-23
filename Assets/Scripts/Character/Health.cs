@@ -5,30 +5,33 @@ using Unity.Burst.CompilerServices;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 namespace RPG.Character
 {
     public class Health : MonoBehaviour
     {
         public event UnityAction OnStartDefeated = () => { };
         [NonSerialized] public float healthPoints = 0f;
-        private bool isDefeated = false;
-        private BubbleEvent bubbleEventCmp;
-
-        private Animator animatorCmp;
-
         [SerializeField] private int potionCount = 1;
         [SerializeField] private float healAmount = 15f;
+        [SerializeField] public Slider sliderCmp;
+        private bool isDefeated = false;
+        private BubbleEvent bubbleEventCmp;
+        private Animator animatorCmp;
+
+
 
         void Awake()
         {
             bubbleEventCmp = GetComponentInChildren<BubbleEvent>();
             animatorCmp = GetComponentInChildren<Animator>();
+            sliderCmp = GetComponentInChildren<Slider>();
         }
 
         void Start()
         {
-            if(CompareTag(Constants.PLAYER_TAG))
-            EventManager.RaiseChangePotionCount(potionCount);
+            if (CompareTag(Constants.PLAYER_TAG))
+                EventManager.RaiseChangePotionCount(potionCount);
         }
         void OnEnable()
         {
@@ -46,7 +49,10 @@ namespace RPG.Character
             {
                 EventManager.RaiseChangePlayerHealth(healthPoints);
             }
-
+            if (sliderCmp != null)
+            {
+                sliderCmp.value = healthPoints;
+            }
             if (healthPoints == 0)
             {
                 Defeated();
