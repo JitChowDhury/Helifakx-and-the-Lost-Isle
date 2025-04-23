@@ -5,8 +5,8 @@ namespace RPG.Core
 
     public static class EventManager
     {
-        public static event UnityAction OnChangePlayerHealth;
-        public static void RaiseChangePlayerHealth() => OnChangePlayerHealth?.Invoke();//null cond operator
+        public static event UnityAction<float> OnChangePlayerHealth;
+        public static void RaiseChangePlayerHealth(float newHealthPoints) => OnChangePlayerHealth?.Invoke(newHealthPoints);//null cond operator
     }
 
 }
