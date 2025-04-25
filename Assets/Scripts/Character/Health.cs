@@ -15,7 +15,7 @@ namespace RPG.Character
         [SerializeField] private int potionCount = 1;
         [SerializeField] private float healAmount = 15f;
         [SerializeField] public Slider sliderCmp;
-        private bool isDefeated = false;
+        public bool isDefeated = false;
         private BubbleEvent bubbleEventCmp;
         private Animator animatorCmp;
 
