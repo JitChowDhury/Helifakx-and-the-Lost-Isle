@@ -9,7 +9,7 @@ namespace RPG.Character
 
         public override void UpdateState(EnemyController enemy)
         {
-            if (enemy.player == null)
+            if (enemy.player == null || enemy.player.GetComponent<Health>().isDefeated)
             {
                 enemy.combatCmp.CancelAttack();
                 return;
