@@ -16,7 +16,7 @@ namespace RPG.UI
         private VisualElement choicesGroup;
         private Story currentStory;
         private PlayerInput playerInputCmp;
-        private bool hasChoices;
+        private bool hasChoices = false;
 
         public UIDialogueState(UIController ui) : base(ui) { }
 
@@ -27,10 +27,11 @@ namespace RPG.UI
             nextButton = dialogueContainer.Q<VisualElement>("dialogue-next-button");
             choicesGroup = dialogueContainer.Q<VisualElement>("choices-group");
 
-            playerInputCmp = GameObject.FindWithTag(Constants.GAMEMANAGER_TAG).GetComponent<PlayerInput>();
+            dialogueContainer.style.display = DisplayStyle.Flex;
+
+            playerInputCmp = GameObject.FindGameObjectWithTag(Constants.GAMEMANAGER_TAG).GetComponent<PlayerInput>();
             playerInputCmp.SwitchCurrentActionMap(Constants.UI_ACTION_MAP);
 
-            dialogueContainer.style.display = DisplayStyle.Flex;
         }
 
 
@@ -45,7 +46,10 @@ namespace RPG.UI
         }
         public void UpdateDialogue()
         {
+            Debug.Log("Update dialogue called");
+
             dialogueText.text = currentStory.Continue();
+
             hasChoices = currentStory.currentChoices.Count > 0;
             if (hasChoices)
             {

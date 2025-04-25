@@ -42,8 +42,9 @@ namespace RPG.Character
             if (inkJSON == null)
             {
                 Debug.LogWarning("Please add an ink file to the npc.");
+                return;
             }
-            EventManager.RaiseInitiageDialogue(inkJSON);
+            EventManager.RaiseInitiateDialogue(inkJSON);
 
 
         }

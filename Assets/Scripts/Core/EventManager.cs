@@ -11,7 +11,7 @@ namespace RPG.Core
         public static event UnityAction<TextAsset> OnInitiateDialogue;
         public static void RaiseChangePlayerHealth(float newHealthPoints) => OnChangePlayerHealth?.Invoke(newHealthPoints);//null cond operator
         public static void RaiseChangePotionCount(int newPotionCount) => OnChangePotionsCount?.Invoke(newPotionCount);
-        public static void RaiseInitiageDialogue(TextAsset inkJSON) => OnInitiateDialogue?.Invoke(inkJSON);
+        public static void RaiseInitiateDialogue(TextAsset inkJSON) => OnInitiateDialogue?.Invoke(inkJSON);
     }
 
 }

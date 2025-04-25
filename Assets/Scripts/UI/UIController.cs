@@ -8,7 +8,7 @@ using UnityEngine.UIElements;
 
 public class UIController : MonoBehaviour
 {
-    public UIBaseState currenState;
+    public UIBaseState currentState;
     public UIMainMenuState mainMenuState;
     public UIDialogueState dialogueState;
 
@@ -41,8 +41,8 @@ public class UIController : MonoBehaviour
         int sceneIndex = SceneManager.GetActiveScene().buildIndex;
         if (sceneIndex == 0)
         {
-            currenState = mainMenuState;
-            currenState.EnterState();
+            currentState = mainMenuState;
+            currentState.EnterState();
         }
         else
         {
@@ -71,7 +71,7 @@ public class UIController : MonoBehaviour
     {
         if (!context.performed) return;
 
-        currenState.SelectButton();
+        currentState.SelectButton();
     }
 
     public void HandleNavigate(InputAction.CallbackContext context)
@@ -99,9 +99,9 @@ public class UIController : MonoBehaviour
 
     private void HandleInitiateDialogue(TextAsset inkJSON)
     {
-        currenState = dialogueState;
-        currenState.EnterState();
-        (currenState as UIDialogueState).SetStory(inkJSON);
+        currentState = dialogueState;
+        currentState.EnterState();
+        (currentState as UIDialogueState).SetStory(inkJSON);
     }
 
 }
