@@ -1,5 +1,6 @@
 
 using System;
+using Ink.Parsed;
 using RPG.Utility;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -9,6 +10,7 @@ namespace RPG.Character
     public class NPCController : MonoBehaviour
     {
         private Canvas canvasCmp;
+        public TextAsset inkJSON;
 
         void Awake()
         {
@@ -35,7 +37,10 @@ namespace RPG.Character
         public void HandleInteract(InputAction.CallbackContext context)
         {
             if (!context.performed || !canvasCmp.enabled) return;
-
+            if (inkJSON == null)
+            {
+                Debug.LogWarning("Please add an ink file to the npc.");
+            }
             print("talking to NPC");
 
         }
