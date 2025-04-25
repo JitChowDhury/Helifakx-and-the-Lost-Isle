@@ -1,6 +1,8 @@
 
 using System;
 using Ink.Parsed;
+using RPG.Core;
+using RPG.UI;
 using RPG.Utility;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -41,7 +43,8 @@ namespace RPG.Character
             {
                 Debug.LogWarning("Please add an ink file to the npc.");
             }
-            print("talking to NPC");
+            EventManager.RaiseInitiageDialogue(inkJSON);
+
 
         }
     }

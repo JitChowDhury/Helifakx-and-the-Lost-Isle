@@ -1,7 +1,7 @@
 -> start
 
 === start ===
-A long time ago , a couple of skeletons stole my ring . 
+A long time ago , a couple of skeletons stole my ring. 
 It would be nice if I could get it back. 
 By chance , have you come across my ring?
 *[Yes]

@@ -10,6 +10,7 @@ public class UIController : MonoBehaviour
 {
     public UIBaseState currenState;
     public UIMainMenuState mainMenuState;
+    public UIDialogueState dialogueState;
 
     private UIDocument uIDocumentCmp;
     public VisualElement root;
@@ -24,6 +25,7 @@ public class UIController : MonoBehaviour
     void Awake()
     {
         mainMenuState = new UIMainMenuState(this);
+        dialogueState = new UIDialogueState(this);
         uIDocumentCmp = GetComponent<UIDocument>();
         root = uIDocumentCmp.rootVisualElement;
         playerInfoContainer = root.Q<VisualElement>("player-info-container");
@@ -54,17 +56,21 @@ public class UIController : MonoBehaviour
     {
         EventManager.OnChangePlayerHealth += HandleChangePlayerHealth;
         EventManager.OnChangePotionsCount += HandleChangePotionCount;
+        EventManager.OnInitiateDialogue += HandleInitiateDialogue;
     }
 
     void OnDisable()
     {
         EventManager.OnChangePlayerHealth -= HandleChangePlayerHealth;
-        EventManager.OnChangePotionsCount += HandleChangePotionCount;
+        EventManager.OnChangePotionsCount -= HandleChangePotionCount;
+        EventManager.OnInitiateDialogue -= HandleInitiateDialogue;
+
 
     }
     public void HandleInteract(InputAction.CallbackContext context)
     {
         if (!context.performed) return;
+
         currenState.SelectButton();
     }
 
@@ -89,6 +95,13 @@ public class UIController : MonoBehaviour
     private void HandleChangePotionCount(int newPotionCount)
     {
         potionLabel.text = newPotionCount.ToString();
+    }
+
+    private void HandleInitiateDialogue(TextAsset inkJSON)
+    {
+        currenState = dialogueState;
+        currenState.EnterState();
+        (currenState as UIDialogueState).SetStory(inkJSON);
     }
 
 }

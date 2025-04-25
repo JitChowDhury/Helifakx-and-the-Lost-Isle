@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1907967836767348144}
   m_Layer: 0
   m_Name: GameManager
-  m_TagString: Untagged
+  m_TagString: GameManager
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -89,6 +89,10 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: a993e92f-46a4-4028-b355-4c29607e0842
     m_ActionName: UI/Unpause
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: b23a5acc-39f3-46aa-a466-509831b2520e
+    m_ActionName: 'Gameplay/Run[/Keyboard/leftShift]'
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Gameplay
