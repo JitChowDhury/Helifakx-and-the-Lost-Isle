@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 using RPG.Utility;
+using RPG.Core;
 namespace RPG.Quest
 {
     public class TreasureChest : MonoBehaviour
@@ -27,7 +28,8 @@ namespace RPG.Quest
         public void HandleInteract(InputAction.CallbackContext context)
         {
             if (!isInteractable || hasBeenOpened) return;
-
+            
+            EventManager.RaiseTresureChestUnlocked();
             playerAnimator.SetTrigger(Constants.INTERACT_ANIMATOR_PARAM);
             animator.SetBool(Constants.IS_SHAKING_ANIMATOR_PARAM, false);
             hasBeenOpened = true;

@@ -12,6 +12,7 @@ public class UIController : MonoBehaviour
     public UIBaseState currentState;
     public UIMainMenuState mainMenuState;
     public UIDialogueState dialogueState;
+    public UIQuestItemState questItemState;
 
     private UIDocument uIDocumentCmp;
     public VisualElement root;
@@ -29,6 +30,8 @@ public class UIController : MonoBehaviour
     {
         mainMenuState = new UIMainMenuState(this);
         dialogueState = new UIDialogueState(this);
+        questItemState = new UIQuestItemState(this);
+
         uIDocumentCmp = GetComponent<UIDocument>();
         root = uIDocumentCmp.rootVisualElement;
         playerInfoContainer = root.Q<VisualElement>("player-info-container");
@@ -61,6 +64,7 @@ public class UIController : MonoBehaviour
         EventManager.OnChangePlayerHealth += HandleChangePlayerHealth;
         EventManager.OnChangePotionsCount += HandleChangePotionCount;
         EventManager.OnInitiateDialogue += HandleInitiateDialogue;
+        EventManager.OnTreasureChestUnlocked += HandleTreasureChestUnlocked;
     }
 
     void OnDisable()
@@ -68,6 +72,7 @@ public class UIController : MonoBehaviour
         EventManager.OnChangePlayerHealth -= HandleChangePlayerHealth;
         EventManager.OnChangePotionsCount -= HandleChangePotionCount;
         EventManager.OnInitiateDialogue -= HandleInitiateDialogue;
+         EventManager.OnTreasureChestUnlocked -= HandleTreasureChestUnlocked;
 
 
     }
@@ -114,6 +119,14 @@ public class UIController : MonoBehaviour
 
 
         inputLockedThisFrame = true;
+    }
+
+    private void HandleTreasureChestUnlocked()
+    {
+        inputLockedThisFrame = true;
+        currentState = questItemState;
+        currentState.EnterState();
+
     }
 
     private void LateUpdate()
