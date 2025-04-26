@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using RPG.Core;
 using RPG.UI;
+using RPG.Utility;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
@@ -19,9 +20,11 @@ public class UIController : MonoBehaviour
     public VisualElement playerInfoContainer;
     public Label healthLabel;
     public Label potionLabel;
-    public List<Button> buttons;
+    public List<Button> buttons = new List<Button>();
     public int currentSelection = 0;
 
+
+    private bool inputLockedThisFrame = false;
     void Awake()
     {
         mainMenuState = new UIMainMenuState(this);
@@ -32,6 +35,7 @@ public class UIController : MonoBehaviour
         mainMenuContainer = root.Q<VisualElement>("main-menu-container");
         healthLabel = playerInfoContainer.Q<Label>("health-label");
         potionLabel = playerInfoContainer.Q<Label>("potions-label");
+
 
 
     }
@@ -70,6 +74,11 @@ public class UIController : MonoBehaviour
     public void HandleInteract(InputAction.CallbackContext context)
     {
         if (!context.performed) return;
+        if (inputLockedThisFrame)
+        {
+            // Ignore input this frame
+            return;
+        }
 
         currentState.SelectButton();
     }
@@ -77,10 +86,10 @@ public class UIController : MonoBehaviour
     public void HandleNavigate(InputAction.CallbackContext context)
     {
         if (!context.performed) return;
-        buttons[currentSelection].RemoveFromClassList("active");
 
 
         Vector2 input = context.ReadValue<Vector2>();
+        buttons[currentSelection].RemoveFromClassList("active");
         currentSelection += input.x > 0 ? 1 : -1;
         currentSelection = Mathf.Clamp(currentSelection, 0, buttons.Count - 1);
         buttons[currentSelection].AddToClassList("active");
@@ -102,6 +111,17 @@ public class UIController : MonoBehaviour
         currentState = dialogueState;
         currentState.EnterState();
         (currentState as UIDialogueState).SetStory(inkJSON);
+
+
+        inputLockedThisFrame = true;
+    }
+
+    private void LateUpdate()
+    {
+        if (inputLockedThisFrame)
+        {
+            inputLockedThisFrame = false;
+        }
     }
 
 }

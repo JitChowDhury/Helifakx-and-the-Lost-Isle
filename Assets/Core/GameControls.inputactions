@@ -208,6 +208,17 @@
             "bindings": [
                 {
                     "name": "",
+                    "id": "970ba2c8-3183-40f0-93d7-36ced597c2b1",
+                    "path": "<Keyboard>/e",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Interact",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "ea0040e1-1fa8-4b31-b48f-7283ccf69d4e",
                     "path": "<Keyboard>/escape",
                     "interactions": "",
@@ -249,17 +260,6 @@
                     "action": "Navigate",
                     "isComposite": false,
                     "isPartOfComposite": true
-                },
-                {
-                    "name": "",
-                    "id": "579b8fb3-a356-4043-b170-7af7d0736f29",
-                    "path": "<Keyboard>/e",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Interact",
-                    "isComposite": false,
-                    "isPartOfComposite": false
                 }
             ]
         }
