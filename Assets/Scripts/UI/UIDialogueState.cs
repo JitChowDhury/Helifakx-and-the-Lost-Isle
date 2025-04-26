@@ -17,6 +17,7 @@ namespace RPG.UI
         private Story currentStory;
         private PlayerInput playerInputCmp;
         private bool hasChoices = false;
+       
 
         public UIDialogueState(UIController ui) : base(ui) { }
 
@@ -42,10 +43,23 @@ namespace RPG.UI
         public void SetStory(TextAsset inkJSON)
         {
             currentStory = new Story(inkJSON.text);
-            //UpdateDialogue();
+            UpdateDialogue();
         }
         public void UpdateDialogue()
         {
+            
+            
+            if (hasChoices)
+            {
+                currentStory.ChooseChoiceIndex(controller.currentSelection);
+            }
+            if (!currentStory.canContinue)
+            {
+                ExitDialogue();
+                return;
+            }
+
+
             Debug.Log("Update dialogue called");
 
             dialogueText.text = currentStory.Continue();
@@ -62,16 +76,37 @@ namespace RPG.UI
             }
 
 
+
+            
         }
 
-        private void HandleNewChoices(List<Choice> choice)
+        private void HandleNewChoices(List<Choice> choices)
         {
             nextButton.style.display = DisplayStyle.None;
             choicesGroup.style.display = DisplayStyle.Flex;
 
             choicesGroup.Clear();
             controller.buttons?.Clear();
+
+            choices.ForEach(CreateNewChoiceButton);
+            controller.buttons = choicesGroup.Query<Button>().ToList();
+            controller.buttons[0].AddToClassList("active");
+            controller.currentSelection = 0;
         }
 
+        private void CreateNewChoiceButton(Choice choice)
+        {
+            Button choiceButton = new Button();
+            choiceButton.AddToClassList("menu-button");
+            choiceButton.text = choice.text;
+            choiceButton.style.marginRight = 20;
+
+            choicesGroup.Add(choiceButton);
+        }
+        private void ExitDialogue()
+        {
+            dialogueContainer.style.display = DisplayStyle.None;
+            playerInputCmp.SwitchCurrentActionMap(Constants.GAMEPLAY_ACTION_MAP);
+        }
     }
 }

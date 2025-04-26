@@ -22,10 +22,10 @@
         </engine:VisualElement>
     </engine:VisualElement>
     <engine:VisualElement name="dialogue-container" style="flex-grow: 0; position: absolute; left: 0; bottom: -2px; width: 100%; padding-top: 60px; padding-right: 60px; padding-bottom: 60px; padding-left: 60px; display: none;">
-        <engine:VisualElement class="primary-container" style="flex-grow: 0; border-left-color: rgb(187, 106, 0); border-right-color: rgb(187, 106, 0); border-top-color: rgb(187, 106, 0); border-bottom-color: rgb(187, 106, 0);">
+        <engine:VisualElement class="primary-container" style="flex-grow: 0; border-left-color: rgb(187, 106, 0); border-right-color: rgb(187, 106, 0); border-top-color: rgb(187, 106, 0); border-bottom-color: rgb(187, 106, 0); display: flex;">
             <engine:Label text="Label" name="dialogue-text" class="base-text" style="-unity-font-style: normal; font-size: 32px; color: rgb(118, 62, 62); -unity-text-outline-width: 0;" />
             <engine:Button text="Next&#10;" name="dialogue-next-button" class="menu-button" style="position: absolute; right: 50px; bottom: -40px; display: none;" />
-            <engine:VisualElement name="choices-group" style="flex-grow: 0; position: absolute; right: 50px; bottom: -40px; flex-direction: row-reverse; display: none;">
+            <engine:VisualElement name="choices-group" style="flex-grow: 0; position: absolute; right: 50px; bottom: -40px; flex-direction: row; display: none;">
                 <engine:Button text="No" name="no-button" class="menu-button" />
                 <engine:Button text="Yes&#10;" class="menu-button" />
             </engine:VisualElement>
