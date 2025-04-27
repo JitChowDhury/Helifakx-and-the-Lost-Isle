@@ -25,7 +25,7 @@ public class UIController : MonoBehaviour
     public int currentSelection = 0;
 
 
-    private bool inputLockedThisFrame = false;
+   
     void Awake()
     {
         mainMenuState = new UIMainMenuState(this);
@@ -79,11 +79,7 @@ public class UIController : MonoBehaviour
     public void HandleInteract(InputAction.CallbackContext context)
     {
         if (!context.performed) return;
-        if (inputLockedThisFrame)
-        {
-            // Ignore input this frame
-            return;
-        }
+       
 
         currentState.SelectButton();
     }
@@ -118,23 +114,17 @@ public class UIController : MonoBehaviour
         (currentState as UIDialogueState).SetStory(inkJSON);
 
 
-        inputLockedThisFrame = true;
+        
     }
 
     private void HandleTreasureChestUnlocked()
     {
-        inputLockedThisFrame = true;
+        
         currentState = questItemState;
         currentState.EnterState();
 
     }
 
-    private void LateUpdate()
-    {
-        if (inputLockedThisFrame)
-        {
-            inputLockedThisFrame = false;
-        }
-    }
+  
 
 }
