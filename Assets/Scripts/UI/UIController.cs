@@ -20,6 +20,7 @@ public class UIController : MonoBehaviour
 
     public VisualElement mainMenuContainer;
     public VisualElement playerInfoContainer;
+    public VisualElement questItem;
     public Label healthLabel;
     public Label potionLabel;
     public List<Button> buttons = new List<Button>();
@@ -39,6 +40,8 @@ public class UIController : MonoBehaviour
         mainMenuContainer = root.Q<VisualElement>("main-menu-container");
         healthLabel = playerInfoContainer.Q<Label>("health-label");
         potionLabel = playerInfoContainer.Q<Label>("potions-label");
+        questItem = playerInfoContainer.Q<VisualElement>("quest-item-icon");
+
 
 
 
@@ -124,6 +127,7 @@ public class UIController : MonoBehaviour
         currentState = questItemState;
         currentState.EnterState();
         (currentState as UIQuestItemState).SetQuestItemLabel(item.itemName);
+        questItem.style.display = DisplayStyle.Flex;
 
     }
 
