@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using RPG.Core;
+using RPG.Quest;
 using RPG.UI;
 using RPG.Utility;
 using UnityEngine;
@@ -19,13 +20,14 @@ public class UIController : MonoBehaviour
 
     public VisualElement mainMenuContainer;
     public VisualElement playerInfoContainer;
+    public VisualElement questItem;
     public Label healthLabel;
     public Label potionLabel;
     public List<Button> buttons = new List<Button>();
     public int currentSelection = 0;
 
 
-   
+
     void Awake()
     {
         mainMenuState = new UIMainMenuState(this);
@@ -38,6 +40,8 @@ public class UIController : MonoBehaviour
         mainMenuContainer = root.Q<VisualElement>("main-menu-container");
         healthLabel = playerInfoContainer.Q<Label>("health-label");
         potionLabel = playerInfoContainer.Q<Label>("potions-label");
+        questItem = playerInfoContainer.Q<VisualElement>("quest-item-icon");
+
 
 
 
@@ -72,14 +76,14 @@ public class UIController : MonoBehaviour
         EventManager.OnChangePlayerHealth -= HandleChangePlayerHealth;
         EventManager.OnChangePotionsCount -= HandleChangePotionCount;
         EventManager.OnInitiateDialogue -= HandleInitiateDialogue;
-         EventManager.OnTreasureChestUnlocked -= HandleTreasureChestUnlocked;
+        EventManager.OnTreasureChestUnlocked -= HandleTreasureChestUnlocked;
 
 
     }
     public void HandleInteract(InputAction.CallbackContext context)
     {
         if (!context.performed) return;
-       
+
 
         currentState.SelectButton();
     }
@@ -114,17 +118,19 @@ public class UIController : MonoBehaviour
         (currentState as UIDialogueState).SetStory(inkJSON);
 
 
-        
+
     }
 
-    private void HandleTreasureChestUnlocked()
+    private void HandleTreasureChestUnlocked(QuestItemSO item)
     {
-        
+
         currentState = questItemState;
         currentState.EnterState();
+        (currentState as UIQuestItemState).SetQuestItemLabel(item.itemName);
+        questItem.style.display = DisplayStyle.Flex;
 
     }
 
-  
+
 
 }

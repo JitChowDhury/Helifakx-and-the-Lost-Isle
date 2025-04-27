@@ -20,7 +20,7 @@ namespace RPG.Character
                 enemy.SwitchState(enemy.chaseState);
                 return;
             }
-
+            if (enemy.hasUIopenend) return;
             enemy.combatCmp.StartAttack();
             enemy.transform.LookAt(enemy.player.transform);
 

@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: -4253039564760544663}
   - component: {fileID: -1114433053581346832}
   - component: {fileID: 8048844974791886301}
+  - component: {fileID: 5545387186341480730}
   - component: {fileID: 4261909682915244927}
   - component: {fileID: 4665280340041567785}
   m_Layer: 6
@@ -87,6 +88,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe9794845e1542b45854f52ccad60562, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  potionCount: 1
+  healAmount: 15
+  sliderCmp: {fileID: 0}
+  isDefeated: 0
 --- !u!114 &-1114433053581346832
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -112,6 +117,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stats: {fileID: 11400000, guid: 0c6513f5cffb5634ebbc986c46269215, type: 2}
+--- !u!114 &5545387186341480730
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8992759291392679914}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cbc213d4d5170be4d952947696f399e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  items: []
 --- !u!65 &4261909682915244927
 BoxCollider:
   m_ObjectHideFlags: 0

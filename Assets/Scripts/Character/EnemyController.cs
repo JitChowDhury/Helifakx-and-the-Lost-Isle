@@ -1,4 +1,5 @@
 using System;
+using RPG.Core;
 using RPG.Utility;
 using UnityEngine;
 
@@ -13,6 +14,7 @@ namespace RPG.Character
         [NonSerialized] public GameObject player;
         [NonSerialized] public Patrol patrolCmp;
         [NonSerialized] public Combat combatCmp;
+        [NonSerialized] public bool hasUIopenend;
         private Health healthCmp;
         public float chaseRange = 2.5f;
         public float attackRange = 0.75f;
@@ -57,10 +59,12 @@ namespace RPG.Character
         void OnEnable()
         {
             healthCmp.OnStartDefeated += HandleStartDefeated;
+            EventManager.OnToggleUI += HandleToggleUI;
         }
         void OnDisable()
         {
             healthCmp.OnStartDefeated -= HandleStartDefeated;
+            EventManager.OnToggleUI -= HandleToggleUI;
         }
 
 
@@ -98,6 +102,11 @@ namespace RPG.Character
         {
             SwitchState(defeatedState);
             currentState.EnterState(this);
+        }
+
+        private void HandleToggleUI(bool isOpened)
+        {
+            hasUIopenend = isOpened;
         }
 
 
