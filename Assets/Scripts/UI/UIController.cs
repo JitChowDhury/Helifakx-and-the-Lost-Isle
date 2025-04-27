@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using RPG.Core;
+using RPG.Quest;
 using RPG.UI;
 using RPG.Utility;
 using UnityEngine;
@@ -25,7 +26,7 @@ public class UIController : MonoBehaviour
     public int currentSelection = 0;
 
 
-   
+
     void Awake()
     {
         mainMenuState = new UIMainMenuState(this);
@@ -72,14 +73,14 @@ public class UIController : MonoBehaviour
         EventManager.OnChangePlayerHealth -= HandleChangePlayerHealth;
         EventManager.OnChangePotionsCount -= HandleChangePotionCount;
         EventManager.OnInitiateDialogue -= HandleInitiateDialogue;
-         EventManager.OnTreasureChestUnlocked -= HandleTreasureChestUnlocked;
+        EventManager.OnTreasureChestUnlocked -= HandleTreasureChestUnlocked;
 
 
     }
     public void HandleInteract(InputAction.CallbackContext context)
     {
         if (!context.performed) return;
-       
+
 
         currentState.SelectButton();
     }
@@ -114,17 +115,18 @@ public class UIController : MonoBehaviour
         (currentState as UIDialogueState).SetStory(inkJSON);
 
 
-        
+
     }
 
-    private void HandleTreasureChestUnlocked()
+    private void HandleTreasureChestUnlocked(QuestItemSO item)
     {
-        
+
         currentState = questItemState;
         currentState.EnterState();
+        (currentState as UIQuestItemState).SetQuestItemLabel(item.itemName);
 
     }
 
-  
+
 
 }
