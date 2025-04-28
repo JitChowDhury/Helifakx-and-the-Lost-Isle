@@ -1,4 +1,5 @@
 EXTERNAL VerifyQuest()
+VAR questCompleted=false
 -> start
 
 === start ===
@@ -7,7 +8,11 @@ It would be nice if I could get it back.
 By chance , have you come across my ring?
    *[Yes]
      ~VerifyQuest()
+     {questCompleted:
      ->success
+    -else:
+    ->failure
+    }
    *[No]
    ->noRing
 

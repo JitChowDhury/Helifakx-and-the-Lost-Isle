@@ -47,6 +47,10 @@ namespace RPG.UI
             currentStory = new Story(inkJSON.text);
             currentStory.BindExternalFunction("VerifyQuest", VerifyQuest);
             nPCController = NPC.GetComponent<NPCController>();
+            if (nPCController.hasQuestItem)
+            {
+                currentStory.ChoosePathString("postCompletion");
+            }
             UpdateDialogue();
         }
         public void UpdateDialogue()
@@ -115,7 +119,8 @@ namespace RPG.UI
 
         public void VerifyQuest()
         {
-            nPCController.CheckPlayerForQuestItem();
+            currentStory.variablesState["questCompleted"] = nPCController.CheckPlayerForQuestItem();
+
         }
     }
 }

@@ -55,7 +55,10 @@ namespace RPG.Character
         public bool CheckPlayerForQuestItem()
         {
             if (hasQuestItem) return true;
-            return true;
+
+            Inventory inventoryCmp = GameObject.FindGameObjectWithTag(Constants.PLAYER_TAG).GetComponent<Inventory>();
+            hasQuestItem = inventoryCmp.HasItem(questItem);
+            return hasQuestItem;
         }
     }
 }
