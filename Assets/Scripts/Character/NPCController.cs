@@ -52,5 +52,10 @@ namespace RPG.Character
 
 
         }
+        public bool CheckPlayerForQuestItem()
+        {
+            if (hasQuestItem) return true;
+            return true;
+        }
     }
 }
