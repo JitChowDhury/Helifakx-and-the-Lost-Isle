@@ -11,8 +11,8 @@ namespace RPG.Character
     public class Health : MonoBehaviour
     {
         public event UnityAction OnStartDefeated = () => { };
+        public int potionCount = 1;
         [NonSerialized] public float healthPoints = 0f;
-        [SerializeField] private int potionCount = 1;
         [SerializeField] private float healAmount = 15f;
         [SerializeField] public Slider sliderCmp;
         public bool isDefeated = false;

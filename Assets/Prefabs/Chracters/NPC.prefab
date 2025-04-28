@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8729863319816557594}
   - component: {fileID: 5866809077623633090}
   - component: {fileID: 3129178773538625754}
+  - component: {fileID: 5776538552083288592}
   m_Layer: 0
   m_Name: NPC
   m_TagString: Untagged
@@ -93,6 +94,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f119c63b02c608d4e947499d713d7966, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inkJSON: {fileID: 0}
+  questItem: {fileID: 0}
+  hasQuestItem: 0
+--- !u!114 &5776538552083288592
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4894630306212621979}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 827058598e20e0c4da537fedcca5fcd4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  reward: {fileID: 11400000, guid: a1ae07393f6c25640a190c8678999503, type: 2}
 --- !u!1 &6794412099400661105
 GameObject:
   m_ObjectHideFlags: 0

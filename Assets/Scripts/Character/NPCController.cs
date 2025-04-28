@@ -13,6 +13,7 @@ namespace RPG.Character
     public class NPCController : MonoBehaviour
     {
         private Canvas canvasCmp;
+        private Reward rewardCmp;
         public TextAsset inkJSON;
 
         public QuestItemSO questItem;
@@ -21,6 +22,7 @@ namespace RPG.Character
         void Awake()
         {
             canvasCmp = GetComponentInChildren<Canvas>();
+            rewardCmp = GetComponent<Reward>();
         }
 
 
@@ -58,6 +60,11 @@ namespace RPG.Character
 
             Inventory inventoryCmp = GameObject.FindGameObjectWithTag(Constants.PLAYER_TAG).GetComponent<Inventory>();
             hasQuestItem = inventoryCmp.HasItem(questItem);
+
+            if (rewardCmp != null && hasQuestItem)
+            {
+                rewardCmp.SendReward();
+            }
             return hasQuestItem;
         }
     }
