@@ -6,6 +6,7 @@ using UnityEngine;
 public class Inventory : MonoBehaviour
 {
     public List<QuestItemSO> items = new List<QuestItemSO>();
+    private bool itemFound = false;
 
     void OnEnable()
     {
@@ -21,6 +22,17 @@ public class Inventory : MonoBehaviour
     public void HandleQuestItemSO(QuestItemSO newItem)
     {
         items.Add(newItem);
+    }
+
+    public bool HasItem(QuestItemSO desiredItem)
+    {
+        bool itemFound = false;
+        items.ForEach((QuestItemSO item) =>
+        {
+            if (desiredItem.name == item.name) itemFound = true;
+        });
+
+        return itemFound;
     }
 
 }

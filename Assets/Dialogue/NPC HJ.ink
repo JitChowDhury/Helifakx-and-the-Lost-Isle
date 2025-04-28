@@ -1,13 +1,20 @@
+EXTERNAL VerifyQuest()
+VAR questCompleted=false
 -> start
 
 === start ===
 A long time ago , a couple of skeletons stole my ring. 
 It would be nice if I could get it back. 
 By chance , have you come across my ring?
-*[Yes]
-->success
-*[No]
-->noRing
+   *[Yes]
+     ~VerifyQuest()
+     {questCompleted:
+     ->success
+    -else:
+    ->failure
+    }
+   *[No]
+   ->noRing
 
 -> END
 
