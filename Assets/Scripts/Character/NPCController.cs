@@ -2,6 +2,7 @@
 using System;
 using Ink.Parsed;
 using RPG.Core;
+using RPG.Quest;
 using RPG.UI;
 using RPG.Utility;
 using UnityEngine;
@@ -13,6 +14,9 @@ namespace RPG.Character
     {
         private Canvas canvasCmp;
         public TextAsset inkJSON;
+
+        public QuestItemSO questItem;
+        public bool hasQuestItem = false;
 
         void Awake()
         {
@@ -44,7 +48,7 @@ namespace RPG.Character
                 Debug.LogWarning("Please add an ink file to the npc.");
                 return;
             }
-            EventManager.RaiseInitiateDialogue(inkJSON);
+            EventManager.RaiseInitiateDialogue(inkJSON, gameObject);
 
 
         }

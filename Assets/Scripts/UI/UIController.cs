@@ -111,11 +111,11 @@ public class UIController : MonoBehaviour
         potionLabel.text = newPotionCount.ToString();
     }
 
-    private void HandleInitiateDialogue(TextAsset inkJSON)
+    private void HandleInitiateDialogue(TextAsset inkJSON, GameObject NPC)
     {
         currentState = dialogueState;
         currentState.EnterState();
-        (currentState as UIDialogueState).SetStory(inkJSON);
+        (currentState as UIDialogueState).SetStory(inkJSON, NPC);
 
 
 
