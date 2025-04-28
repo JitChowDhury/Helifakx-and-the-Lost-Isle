@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c367bbd2de1298f4bbe09ae5ec05fea2, type: 3}
   m_Name: Sword
   m_EditorClassIdentifier: 
-  bonusHealth: 0
-  bondusDamage: 0
-  bonusPotions: 0
-  forceWeaponSwap: 0
+  bonusHealth: 20
+  bondusDamage: 8
+  bonusPotions: 3
+  forceWeaponSwap: 1
   weapons: 1
