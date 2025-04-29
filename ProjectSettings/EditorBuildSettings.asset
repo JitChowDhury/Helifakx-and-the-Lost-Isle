@@ -11,5 +11,8 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/MainIsland.unity
     guid: 99c9720ab356a0642a771bea13969a05
+  - enabled: 1
+    path: Assets/Scenes/Dungeon Scene.unity
+    guid: 4f9870909a4c38649853d31ed14540b3
   m_configObjects: {}
   m_UseUCBPForAssetBundles: 0

@@ -1,3 +1,4 @@
+using System;
 using RPG.Core;
 using RPG.Quest;
 using RPG.Utility;
@@ -9,8 +10,8 @@ namespace RPG.Character
     {
 
         public CharacterStatsSO stats;
-        private Health healthCmp;
-        private Combat combatCmp;
+        [NonSerialized] public Health healthCmp;
+        [NonSerialized] public Combat combatCmp;
         private GameObject axeWeapon;
         private GameObject swordWeapon;
 
@@ -43,9 +44,21 @@ namespace RPG.Character
 
         void Start()
         {
-            healthCmp.healthPoints = stats.health;
+            if (PlayerPrefs.HasKey("Health"))
+            {
+                healthCmp.healthPoints = PlayerPrefs.GetFloat("Health");
+                healthCmp.potionCount = PlayerPrefs.GetInt("Potions");
+                combatCmp.damage = PlayerPrefs.GetFloat("Damage");
+                weapon = (Weapons)PlayerPrefs.GetInt("Weapon");
+            }
+            else
+            {
+                healthCmp.healthPoints = stats.health;
+                combatCmp.damage = stats.damage;
+            }
+
+
             EventManager.RaiseChangePlayerHealth(healthCmp.healthPoints);
-            combatCmp.damage = stats.damage;
             SetWeapon();
 
         }

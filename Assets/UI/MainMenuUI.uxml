@@ -4,7 +4,7 @@
         <engine:VisualElement name="box" class="primary-container" style="border-left-color: rgb(187, 106, 0); border-right-color: rgb(187, 106, 0); border-top-color: rgb(187, 106, 0); border-bottom-color: rgb(187, 106, 0); background-color: rgb(255, 243, 201);">
             <engine:Label text="HELIFAKX And The LOST ISLE" class="base-text" style="font-size: 80px; -unity-text-align: upper-center; color: rgb(123, 74, 47);" />
             <engine:VisualElement name="buttons" style="flex-grow: 0; position: absolute; left: 0; bottom: -50px; width: 100%; flex-direction: row; justify-content: center;">
-                <engine:Button text="START&#10;" name="start-button" class="menu-button" style="background-color: rgb(0, 150, 136);" />
+                <engine:Button text="START&#10;" name="start-button" class="menu-button" />
             </engine:VisualElement>
             <engine:VisualElement style="flex-grow: 0; background-image: url(&quot;project://database/Assets/Game%20Assets/Imported%20Assets/UI/muriti--removebg-preview.png?fileID=2800000&amp;guid=68b3f3e6c56284e4b97b506bd8020ec9&amp;type=3#muriti--removebg-preview&quot;); width: 276px; height: 202px; position: absolute; top: -161px; left: 394px;" />
             <engine:VisualElement style="flex-grow: 0; background-image: url(&quot;project://database/Assets/Game%20Assets/Imported%20Assets/UI/muriti--removebg-preview.png?fileID=2800000&amp;guid=68b3f3e6c56284e4b97b506bd8020ec9&amp;type=3#muriti--removebg-preview&quot;); width: 276px; height: 202px; position: absolute; top: -162px; left: 511px;" />

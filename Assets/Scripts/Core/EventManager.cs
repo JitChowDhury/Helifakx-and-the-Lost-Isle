@@ -12,6 +12,7 @@ namespace RPG.Core
         public static event UnityAction<TextAsset, GameObject> OnInitiateDialogue;
         public static event UnityAction<QuestItemSO> OnTreasureChestUnlocked;
         public static event UnityAction<RewardSO> OnReward;
+        public static event UnityAction<Collider, int> OnPortalEnter;
 
         public static event UnityAction<bool> OnToggleUI;
         public static void RaiseChangePlayerHealth(float newHealthPoints) => OnChangePlayerHealth?.Invoke(newHealthPoints);//null cond operator
@@ -21,6 +22,8 @@ namespace RPG.Core
         public static void RaiseTresureChestUnlocked(QuestItemSO item) => OnTreasureChestUnlocked?.Invoke(item);
         public static void RaiseToggleUI(bool isOpened) => OnToggleUI?.Invoke(isOpened);
         public static void RaiseReward(RewardSO reward) => OnReward?.Invoke(reward);
+
+        public static void RaisePortalEnter(Collider player, int sceneIndex) => OnPortalEnter?.Invoke(player, sceneIndex);
     }
 
 }

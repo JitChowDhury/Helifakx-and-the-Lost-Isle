@@ -90,15 +90,17 @@ public class UIController : MonoBehaviour
 
     public void HandleNavigate(InputAction.CallbackContext context)
     {
-        if (!context.performed) return;
+        if (!context.performed || buttons.Count == 0) return;
 
+        buttons[currentSelection].RemoveFromClassList("active");
 
         Vector2 input = context.ReadValue<Vector2>();
-        buttons[currentSelection].RemoveFromClassList("active");
         currentSelection += input.x > 0 ? 1 : -1;
-        currentSelection = Mathf.Clamp(currentSelection, 0, buttons.Count - 1);
-        buttons[currentSelection].AddToClassList("active");
+        currentSelection = Mathf.Clamp(
+            currentSelection, 0, buttons.Count - 1
+        );
 
+        buttons[currentSelection].AddToClassList("active");
     }
 
     private void HandleChangePlayerHealth(float newHealthPoints)
