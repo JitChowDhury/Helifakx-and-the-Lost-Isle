@@ -1,3 +1,4 @@
+using RPG.Character;
 using UnityEngine;
 namespace RPG.Core
 {
@@ -14,7 +15,13 @@ namespace RPG.Core
         }
         private void HandlePortalEnter(Collider player, int nextSceneIndex)
         {
-            print("Portal Entered");
+            PlayerController playerControllerCmp = player.GetComponent<PlayerController>();
+
+            PlayerPrefs.SetFloat("Health", playerControllerCmp.healthCmp.healthPoints);
+            PlayerPrefs.SetInt("Potions", playerControllerCmp.healthCmp.potionCount);
+            PlayerPrefs.SetFloat("Damage", playerControllerCmp.combatCmp.damage);
+            PlayerPrefs.SetInt("Weapon", (int)playerControllerCmp.weapon);
+            PlayerPrefs.SetInt("SceneIndex", nextSceneIndex);
         }
     }
 }

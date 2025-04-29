@@ -1,3 +1,4 @@
+using System;
 using RPG.Core;
 using RPG.Quest;
 using RPG.Utility;
@@ -9,8 +10,8 @@ namespace RPG.Character
     {
 
         public CharacterStatsSO stats;
-        private Health healthCmp;
-        private Combat combatCmp;
+        [NonSerialized] public Health healthCmp;
+        [NonSerialized] public Combat combatCmp;
         private GameObject axeWeapon;
         private GameObject swordWeapon;
 
@@ -43,6 +44,11 @@ namespace RPG.Character
 
         void Start()
         {
+            if (PlayerPrefs.HasKey("Health"))
+            {
+                print("Saved Data Found");
+            }
+
             healthCmp.healthPoints = stats.health;
             EventManager.RaiseChangePlayerHealth(healthCmp.healthPoints);
             combatCmp.damage = stats.damage;
