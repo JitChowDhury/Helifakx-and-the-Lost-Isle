@@ -46,12 +46,19 @@ namespace RPG.Character
         {
             if (PlayerPrefs.HasKey("Health"))
             {
-                print("Saved Data Found");
+                healthCmp.healthPoints = PlayerPrefs.GetFloat("Health");
+                healthCmp.potionCount = PlayerPrefs.GetInt("Potions");
+                combatCmp.damage = PlayerPrefs.GetFloat("Damage");
+                weapon = (Weapons)PlayerPrefs.GetInt("Weapon");
+            }
+            else
+            {
+                healthCmp.healthPoints = stats.health;
+                combatCmp.damage = stats.damage;
             }
 
-            healthCmp.healthPoints = stats.health;
+
             EventManager.RaiseChangePlayerHealth(healthCmp.healthPoints);
-            combatCmp.damage = stats.damage;
             SetWeapon();
 
         }
