@@ -52,7 +52,7 @@
 }
 
 .active {
-    background-color: rgb(38, 137, 126);
+    background-color: rgb(255, 112, 67);
 }
 
 .stat-container {
