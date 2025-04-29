@@ -67,6 +67,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c25eb6e126c54a4a8bcc6fd70cad479, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  nextSceneIndex: 0
+  spawnPoint: {fileID: 358711456896633589}
 --- !u!1 &2884648479671156147
 GameObject:
   m_ObjectHideFlags: 0

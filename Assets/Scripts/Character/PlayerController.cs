@@ -3,6 +3,7 @@ using RPG.Core;
 using RPG.Quest;
 using RPG.Utility;
 using UnityEngine;
+using UnityEngine.AI;
 namespace RPG.Character
 {
 
@@ -14,6 +15,8 @@ namespace RPG.Character
         [NonSerialized] public Combat combatCmp;
         private GameObject axeWeapon;
         private GameObject swordWeapon;
+        private NavMeshAgent agent;
+        private Portal portalCmp;
 
         public Weapons weapon = Weapons.Axe;
 
@@ -38,8 +41,11 @@ namespace RPG.Character
 
             healthCmp = GetComponent<Health>();
             combatCmp = GetComponent<Combat>();
+            agent = GetComponent<NavMeshAgent>();
+
             axeWeapon = GameObject.FindGameObjectWithTag(Constants.AXE_TAG);
             swordWeapon = GameObject.FindGameObjectWithTag(Constants.SWORD_TAG);
+            portalCmp = FindFirstObjectByType<Portal>();
         }
 
         void Start()
@@ -50,6 +56,9 @@ namespace RPG.Character
                 healthCmp.potionCount = PlayerPrefs.GetInt("Potions");
                 combatCmp.damage = PlayerPrefs.GetFloat("Damage");
                 weapon = (Weapons)PlayerPrefs.GetInt("Weapon");
+
+                agent.Warp(portalCmp.spawnPoint.position);
+                transform.rotation = portalCmp.spawnPoint.rotation;
             }
             else
             {

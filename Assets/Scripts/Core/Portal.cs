@@ -6,6 +6,7 @@ namespace RPG.Core
     public class Portal : MonoBehaviour
     {
         [SerializeField] int nextSceneIndex;
+        public Transform spawnPoint;
         private Collider colliderCmp;
         void Awake()
         {
