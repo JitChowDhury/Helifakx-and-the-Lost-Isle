@@ -19,6 +19,7 @@ namespace RPG.Character
         public float chaseRange = 2.5f;
         public float attackRange = 0.75f;
         public CharacterStatsSO stats;
+        public string enemyID = "";
 
         private AIBaseState currentState;
         public AIReturnState returnState = new AIReturnState();
@@ -32,6 +33,11 @@ namespace RPG.Character
             if (stats == null)
             {
                 Debug.LogWarning($"{name} does not have stats");
+            }
+
+            if (enemyID.Length == 0)
+            {
+                Debug.LogWarning($"{name} does not have a enemy ID");
             }
 
             originalPosition = transform.position;

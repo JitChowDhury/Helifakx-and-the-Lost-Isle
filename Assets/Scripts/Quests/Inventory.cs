@@ -26,7 +26,7 @@ public class Inventory : MonoBehaviour
 
     public bool HasItem(QuestItemSO desiredItem)
     {
-        bool itemFound = false;
+        itemFound = false;
         items.ForEach((QuestItemSO item) =>
         {
             if (desiredItem.name == item.name) itemFound = true;
