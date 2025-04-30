@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using RPG.Character;
 using RPG.Utility;
@@ -60,7 +61,10 @@ namespace RPG.Core
             });
 
             if (isAlive) return;
-            print(ID);
+            List<string> enemiesDefeated = PlayerPrefsUtility.GetString("EnemiesDefeated");
+            enemiesDefeated.Add(ID);
+
+            PlayerPrefsUtility.SetString("EnemiesDefeated", enemiesDefeated);
         }
 
     }
