@@ -9,7 +9,7 @@ public static class PlayerPrefsUtility
         string formattedValue = String.Join(",", value);
         PlayerPrefs.SetString(key, formattedValue);
 
-        Debug.Log(formattedValue);
+
 
     }
 
