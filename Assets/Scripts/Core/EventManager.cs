@@ -10,7 +10,7 @@ namespace RPG.Core
         public static event UnityAction<float> OnChangePlayerHealth;
         public static event UnityAction<int> OnChangePotionsCount;
         public static event UnityAction<TextAsset, GameObject> OnInitiateDialogue;
-        public static event UnityAction<QuestItemSO> OnTreasureChestUnlocked;
+        public static event UnityAction<QuestItemSO, bool> OnTreasureChestUnlocked;
         public static event UnityAction<RewardSO> OnReward;
         public static event UnityAction<Collider, int> OnPortalEnter;
 
@@ -19,7 +19,7 @@ namespace RPG.Core
         public static void RaiseChangePotionCount(int newPotionCount) => OnChangePotionsCount?.Invoke(newPotionCount);
         public static void RaiseInitiateDialogue(TextAsset inkJSON, GameObject NPC) => OnInitiateDialogue?.Invoke(inkJSON, NPC);
 
-        public static void RaiseTresureChestUnlocked(QuestItemSO item) => OnTreasureChestUnlocked?.Invoke(item);
+        public static void RaiseTresureChestUnlocked(QuestItemSO item, bool showUI) => OnTreasureChestUnlocked?.Invoke(item, showUI);
         public static void RaiseToggleUI(bool isOpened) => OnToggleUI?.Invoke(isOpened);
         public static void RaiseReward(RewardSO reward) => OnReward?.Invoke(reward);
 

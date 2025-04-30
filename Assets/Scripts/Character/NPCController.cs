@@ -1,5 +1,5 @@
 
-using System;
+using System.Collections.Generic;
 using Ink.Parsed;
 using RPG.Core;
 using RPG.Quest;
@@ -19,13 +19,21 @@ namespace RPG.Character
         public QuestItemSO questItem;
         public bool hasQuestItem = false;
 
+
         void Awake()
         {
             canvasCmp = GetComponentInChildren<Canvas>();
             rewardCmp = GetComponent<Reward>();
         }
 
-
+        void Start()
+        {
+            if (PlayerPrefs.HasKey("NPCItems"))
+            {
+                List<string> npcItems = PlayerPrefsUtility.GetString("NPCItems");
+                npcItems.ForEach(CheckNpcQuestItem);
+            }
+        }
         void OnTriggerEnter(Collider other)
         {
             if (other.CompareTag(Constants.PLAYER_TAG))
@@ -66,6 +74,13 @@ namespace RPG.Character
                 rewardCmp.SendReward();
             }
             return hasQuestItem;
+        }
+
+        private void CheckNpcQuestItem(string itemName)
+        {
+            if (itemName == questItem.itemName)
+                hasQuestItem = true;
+
         }
     }
 }

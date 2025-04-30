@@ -17,5 +17,7 @@ namespace RPG.Utility
         public const string AXE_TAG = "Axe";
         public const string SWORD_TAG = "Sword";
 
+        public const string NPC_QUEST_TAG = "NPCWithQuest";
+
     }
 }

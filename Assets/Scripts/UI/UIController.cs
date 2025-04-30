@@ -123,13 +123,14 @@ public class UIController : MonoBehaviour
 
     }
 
-    private void HandleTreasureChestUnlocked(QuestItemSO item)
+    private void HandleTreasureChestUnlocked(QuestItemSO item, bool showUI)
     {
+        questItem.style.display = DisplayStyle.Flex;
+        if (!showUI) return;
 
         currentState = questItemState;
         currentState.EnterState();
         (currentState as UIQuestItemState).SetQuestItemLabel(item.itemName);
-        questItem.style.display = DisplayStyle.Flex;
 
     }
 
