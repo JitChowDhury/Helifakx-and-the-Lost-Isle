@@ -50,6 +50,10 @@ namespace RPG.Core
 
             Inventory inventoryCmp = player.GetComponent<Inventory>();
             inventoryCmp.items.ForEach(SaveQuestItem);
+
+            List<GameObject> NPCs = new List<GameObject>(GameObject.FindGameObjectsWithTag(Constants.NPC_QUEST_TAG));
+
+            NPCs.ForEach(SaveNpcItem);
         }
 
         private void SaveDefeatedEnemies(string ID)
@@ -75,7 +79,20 @@ namespace RPG.Core
         {
             List<string> playerItems = PlayerPrefsUtility.GetString("PlayerItems");
             playerItems.Add(item.name);
-            PlayerPrefsUtility.SetString("PlayerItems",playerItems);
+            PlayerPrefsUtility.SetString("PlayerItems", playerItems);
+        }
+
+        private void SaveNpcItem(GameObject npc)
+        {
+            NPCController nPCControllerCmp = npc.GetComponent<NPCController>();
+            if (!nPCControllerCmp.hasQuestItem) return;
+
+            List<string> npcItems = PlayerPrefsUtility.GetString("NPCItems");
+
+            npcItems.Add(nPCControllerCmp.questItem.itemName);
+
+            PlayerPrefsUtility.SetString("NPCItems", npcItems);
+
         }
 
     }
