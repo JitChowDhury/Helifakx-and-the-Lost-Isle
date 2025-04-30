@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using RPG.Core;
 using RPG.Utility;
 using UnityEngine;
@@ -19,6 +20,7 @@ namespace RPG.Character
         public float chaseRange = 2.5f;
         public float attackRange = 0.75f;
         public CharacterStatsSO stats;
+        public string enemyID = "";
 
         private AIBaseState currentState;
         public AIReturnState returnState = new AIReturnState();
@@ -32,6 +34,11 @@ namespace RPG.Character
             if (stats == null)
             {
                 Debug.LogWarning($"{name} does not have stats");
+            }
+
+            if (enemyID.Length == 0)
+            {
+                Debug.LogWarning($"{name} does not have a enemy ID");
             }
 
             originalPosition = transform.position;
@@ -54,6 +61,15 @@ namespace RPG.Character
                 healthCmp.sliderCmp.maxValue = stats.health;
                 healthCmp.sliderCmp.value = stats.health;
             }
+
+            List<string> enemiesDefeated = PlayerPrefsUtility.GetString("EnemiesDefeated");
+            enemiesDefeated.ForEach((ID) =>
+            {
+                if (ID == enemyID)
+                {
+                    Destroy(gameObject);
+                }
+            });
         }
 
         void OnEnable()
