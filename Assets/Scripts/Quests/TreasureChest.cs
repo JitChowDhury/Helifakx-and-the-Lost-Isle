@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using RPG.Utility;
 using RPG.Core;
+using System.Collections.Generic;
 namespace RPG.Quest
 {
     public class TreasureChest : MonoBehaviour
@@ -11,6 +12,15 @@ namespace RPG.Quest
         private bool isInteractable = false;
         private bool hasBeenOpened = false;
         [SerializeField] private QuestItemSO questItem;
+
+        void Start()
+        {
+            if (PlayerPrefs.HasKey("PlayerItems"))
+            {
+                List<string> playerItems = PlayerPrefsUtility.GetString("PlayerItems");
+                playerItems.ForEach(CheckItem);
+            }
+        }
 
         void Awake()
         {
@@ -30,10 +40,20 @@ namespace RPG.Quest
         {
             if (!isInteractable || hasBeenOpened || !context.performed) return;
 
-            EventManager.RaiseTresureChestUnlocked(questItem);
+            EventManager.RaiseTresureChestUnlocked(questItem, true);
             playerAnimator.SetTrigger(Constants.INTERACT_ANIMATOR_PARAM);
             animator.SetBool(Constants.IS_SHAKING_ANIMATOR_PARAM, false);
             hasBeenOpened = true;
+
+
+        }
+
+        private void CheckItem(string itemName)
+        {
+            if (itemName != questItem.name) return;
+            hasBeenOpened = true;
+            animator.SetBool(Constants.IS_SHAKING_ANIMATOR_PARAM, false);
+            EventManager.RaiseTresureChestUnlocked(questItem, false);
 
 
         }

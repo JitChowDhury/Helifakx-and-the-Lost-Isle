@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using RPG.Character;
+using RPG.Quest;
 using RPG.Utility;
 using UnityEngine;
 namespace RPG.Core
@@ -46,6 +47,9 @@ namespace RPG.Core
 
             enemiesAlive.AddRange(GameObject.FindGameObjectsWithTag(Constants.ENEMY_TAG));
             sceneEnemyIDs.ForEach(SaveDefeatedEnemies);
+
+            Inventory inventoryCmp = player.GetComponent<Inventory>();
+            inventoryCmp.items.ForEach(SaveQuestItem);
         }
 
         private void SaveDefeatedEnemies(string ID)
@@ -65,6 +69,13 @@ namespace RPG.Core
             enemiesDefeated.Add(ID);
 
             PlayerPrefsUtility.SetString("EnemiesDefeated", enemiesDefeated);
+        }
+
+        private void SaveQuestItem(QuestItemSO item)
+        {
+            List<string> playerItems = PlayerPrefsUtility.GetString("PlayerItems");
+            playerItems.Add(item.name);
+            PlayerPrefsUtility.SetString("PlayerItems",playerItems);
         }
 
     }

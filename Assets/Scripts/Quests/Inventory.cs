@@ -19,7 +19,7 @@ public class Inventory : MonoBehaviour
     }
 
 
-    public void HandleQuestItemSO(QuestItemSO newItem)
+    public void HandleQuestItemSO(QuestItemSO newItem, bool showUI)
     {
         items.Add(newItem);
     }
