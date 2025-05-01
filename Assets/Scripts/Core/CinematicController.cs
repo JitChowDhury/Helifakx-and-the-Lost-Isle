@@ -9,6 +9,8 @@ namespace RPG.Core
     {
         PlayableDirector playableDirectorCmp;
         Collider colliderCmp;
+
+        [SerializeField] private bool customPlayOnAwake = false;
         void Awake()
         {
             playableDirectorCmp = GetComponent<PlayableDirector>();
@@ -17,6 +19,9 @@ namespace RPG.Core
         void Start()
         {
             colliderCmp.enabled = !PlayerPrefs.HasKey("SceneIndex");
+            if (!customPlayOnAwake) return;
+            playableDirectorCmp.Play();
+            colliderCmp.enabled = false;
         }
 
         void OnEnable()
