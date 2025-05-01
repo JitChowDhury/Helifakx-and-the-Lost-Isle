@@ -4,12 +4,21 @@ using RPG.Character;
 using RPG.Quest;
 using RPG.Utility;
 using UnityEngine;
+using UnityEngine.InputSystem;
 namespace RPG.Core
 {
     public class GameManager : MonoBehaviour
     {
         private List<string> sceneEnemyIDs = new List<string>();
         private List<GameObject> enemiesAlive = new List<GameObject>();
+
+
+        private PlayerInput playerInputCmp;
+
+        void Awake()
+        {
+            playerInputCmp = GetComponent<PlayerInput>();
+        }
         void Start()
         {
             List<GameObject> sceneEnemies = new List<GameObject>();
@@ -29,10 +38,13 @@ namespace RPG.Core
         void OnEnable()
         {
             EventManager.OnPortalEnter += HandlePortalEnter;
+            EventManager.OnCutsceneUpdated += HandleCutsceneUpdated;
         }
         void OnDisable()
         {
             EventManager.OnPortalEnter -= HandlePortalEnter;
+            EventManager.OnCutsceneUpdated -= HandleCutsceneUpdated;
+
 
         }
         private void HandlePortalEnter(Collider player, int nextSceneIndex)
@@ -93,6 +105,10 @@ namespace RPG.Core
 
             PlayerPrefsUtility.SetString("NPCItems", npcItems);
 
+        }
+        private void HandleCutsceneUpdated(bool isEnabled)
+        {
+            playerInputCmp.enabled = isEnabled;
         }
 
     }
