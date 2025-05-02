@@ -1,16 +1,33 @@
 using UnityEngine;
+using UnityEngine.UIElements;
+using UnityEngine.InputSystem;
+using RPG.Utility;
+using RPG.Core;
 
-public class UIVictoryState : MonoBehaviour
+namespace RPG.UI
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public class UIVictoryState : UIBaseState
     {
-        
-    }
+        public UIVictoryState(UIController uiController) : base(uiController) { }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        public override void EnterState()
+        {
+            PlayerInput playerInputCmp = GameObject.FindGameObjectWithTag(
+                Constants.GAMEMANAGER_TAG
+            ).GetComponent<PlayerInput>();
+            VisualElement victoryContainer = controller.root
+                .Q<VisualElement>("victory-container");
+
+            playerInputCmp.SwitchCurrentActionMap(
+                Constants.UI_ACTION_MAP
+            );
+            victoryContainer.style.display = DisplayStyle.Flex;
+        }
+
+        public override void SelectButton()
+        {
+            PlayerPrefs.DeleteAll();
+            SceneTransition.Initiate(0);
+        }
     }
 }

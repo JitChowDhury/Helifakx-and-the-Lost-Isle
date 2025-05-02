@@ -9,6 +9,7 @@ namespace RPG.Utility
         public const string INTERACT_ANIMATOR_PARAM = "interact";
         public const string DEFEATED_ANIMATOR_PARAM = "defeated";
         public const string ENEMY_TAG = "Enemy";
+        public const string BOSS_TAG = "Boss";
         public const string CAMERA_TAG = "MainCamera";
         public const string GAMEMANAGER_TAG = "GameManager";
         public const string GAMEPLAY_ACTION_MAP = "Gameplay";

@@ -14,6 +14,8 @@ public class UIController : MonoBehaviour
     public UIMainMenuState mainMenuState;
     public UIDialogueState dialogueState;
     public UIQuestItemState questItemState;
+    public UIVictoryState victoryState;
+    public UIGameOverState gameOverState;
 
     private UIDocument uIDocumentCmp;
     public VisualElement root;
@@ -33,6 +35,9 @@ public class UIController : MonoBehaviour
         mainMenuState = new UIMainMenuState(this);
         dialogueState = new UIDialogueState(this);
         questItemState = new UIQuestItemState(this);
+        victoryState = new UIVictoryState(this);
+        gameOverState = new UIGameOverState(this);
+
 
         uIDocumentCmp = GetComponent<UIDocument>();
         root = uIDocumentCmp.rootVisualElement;
@@ -69,6 +74,8 @@ public class UIController : MonoBehaviour
         EventManager.OnChangePotionsCount += HandleChangePotionCount;
         EventManager.OnInitiateDialogue += HandleInitiateDialogue;
         EventManager.OnTreasureChestUnlocked += HandleTreasureChestUnlocked;
+        EventManager.OnVictory += HandleVictory;
+        EventManager.OnGameOver += HandleGameOver;
     }
 
     void OnDisable()
@@ -77,6 +84,8 @@ public class UIController : MonoBehaviour
         EventManager.OnChangePotionsCount -= HandleChangePotionCount;
         EventManager.OnInitiateDialogue -= HandleInitiateDialogue;
         EventManager.OnTreasureChestUnlocked -= HandleTreasureChestUnlocked;
+        EventManager.OnVictory -= HandleVictory;
+        EventManager.OnGameOver -= HandleGameOver;
 
 
     }
@@ -132,6 +141,18 @@ public class UIController : MonoBehaviour
         currentState.EnterState();
         (currentState as UIQuestItemState).SetQuestItemLabel(item.itemName);
 
+    }
+    private void HandleVictory()
+    {
+        currentState = victoryState;
+        currentState.EnterState();
+
+    }
+
+    private void HandleGameOver()
+    {
+        currentState = gameOverState;
+        currentState.EnterState();
     }
 
 

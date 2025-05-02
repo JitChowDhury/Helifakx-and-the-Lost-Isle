@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.UIElements;
 using UnityEngine.InputSystem;
 using RPG.Utility;
+using RPG.Core;
 
 namespace RPG.UI
 {
@@ -24,6 +25,10 @@ namespace RPG.UI
             gameOverContainer.style.display = DisplayStyle.Flex;
         }
 
-        public override void SelectButton() { }
+        public override void SelectButton()
+        {
+            PlayerPrefs.DeleteAll();
+            SceneTransition.Initiate(0);
+        }
     }
 }
