@@ -41,4 +41,31 @@
             <engine:Button text="Claim&#10;" class="menu-button" style="position: absolute; bottom: -50px;" />
         </engine:VisualElement>
     </engine:VisualElement>
+    <engine:VisualElement name="victory-container" style="flex-grow: 0; width: 100%; height: 100%; align-items: center; justify-content: center; display: none;">
+        <engine:VisualElement class="primary-container" style="flex-grow: 0; width: 600px; height: 500px; align-items: center; justify-content: flex-start;">
+            <engine:VisualElement style="flex-grow: 0; background-image: url(&quot;project://database/Assets/Game%20Assets/Sprites/Paper%20BG.png?fileID=2800000&amp;guid=b1aa48f59209ca54f8ad1e5966d3e81d&amp;type=3#Paper BG&quot;); width: 350px; height: 350px; align-items: center;">
+                <engine:VisualElement style="flex-grow: 0; background-image: url(&quot;project://database/Assets/Game%20Assets/Sprites/Victory.png?fileID=2800000&amp;guid=10647c5842ded2c41b23befdaa14e943&amp;type=3#Victory&quot;); width: 250px; height: 250px;" />
+            </engine:VisualElement>
+            <engine:Label text="Victoryyy!!!" class="base-text" style="font-size: 40px; -unity-font-style: normal; -unity-text-align: upper-center; margin-top: 40px;" />
+            <engine:Button text="Go to Main Menu&#10;" class="menu-button" style="position: absolute; bottom: -50px;" />
+        </engine:VisualElement>
+    </engine:VisualElement>
+    <engine:VisualElement name="game-over-container" style="flex-grow: 0; width: 100%; height: 100%; align-items: center; justify-content: center; display: none;">
+        <engine:VisualElement class="primary-container" style="flex-grow: 0; width: 600px; height: 500px; align-items: center; justify-content: flex-start;">
+            <engine:VisualElement style="flex-grow: 0; background-image: url(&quot;project://database/Assets/Game%20Assets/Sprites/Paper%20BG.png?fileID=2800000&amp;guid=b1aa48f59209ca54f8ad1e5966d3e81d&amp;type=3#Paper BG&quot;); width: 350px; height: 350px; align-items: center;">
+                <engine:VisualElement style="flex-grow: 0; background-image: url(&quot;project://database/Assets/Game%20Assets/Sprites/Game%20Over.png?fileID=2800000&amp;guid=127de711d0ac2e44487e5407a2913a64&amp;type=3#Game Over&quot;); width: 250px; height: 250px;" />
+            </engine:VisualElement>
+            <engine:Label text="Game Over!" class="base-text" style="font-size: 40px; -unity-font-style: normal; -unity-text-align: upper-center; margin-top: 40px;" />
+            <engine:Button text="Go to Main Menu" class="menu-button" style="position: absolute; bottom: -50px;" />
+        </engine:VisualElement>
+    </engine:VisualElement>
+    <engine:VisualElement name="pause-container" style="flex-grow: 0; width: 100%; height: 100%; align-items: center; justify-content: center; display: none;">
+        <engine:VisualElement class="primary-container" style="flex-grow: 0; width: 600px; height: 500px; align-items: center; justify-content: flex-start;">
+            <engine:VisualElement style="flex-grow: 0; background-image: url(&quot;project://database/Assets/Game%20Assets/Sprites/Paper%20BG.png?fileID=2800000&amp;guid=b1aa48f59209ca54f8ad1e5966d3e81d&amp;type=3#Paper BG&quot;); width: 350px; height: 350px; align-items: center;">
+                <engine:VisualElement style="flex-grow: 0; background-image: url(&quot;project://database/Assets/Game%20Assets/Sprites/Pause.png?fileID=2800000&amp;guid=b36e3c38a6e787648bb7772a0879a6ef&amp;type=3#Pause&quot;); width: 250px; height: 250px;" />
+            </engine:VisualElement>
+            <engine:Label text="Game Paused" class="base-text" style="font-size: 40px; -unity-font-style: normal; -unity-text-align: upper-center; margin-top: 40px;" />
+            <engine:Button text="Unpause" class="menu-button" style="position: absolute; bottom: -50px;" />
+        </engine:VisualElement>
+    </engine:VisualElement>
 </engine:UXML>

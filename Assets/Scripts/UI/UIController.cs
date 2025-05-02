@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using RPG.Core;
 using RPG.Quest;
@@ -14,6 +15,13 @@ public class UIController : MonoBehaviour
     public UIMainMenuState mainMenuState;
     public UIDialogueState dialogueState;
     public UIQuestItemState questItemState;
+    public UIVictoryState victoryState;
+    public UIGameOverState gameOverState;
+    public UIPauseState pauseState;
+    public UIUnpauseState unpauseState;
+    public AudioClip GameOverAudio;
+    public AudioClip VictoryAudio;
+    [NonSerialized] public AudioSource audioSourceCmp;
 
     private UIDocument uIDocumentCmp;
     public VisualElement root;
@@ -25,16 +33,24 @@ public class UIController : MonoBehaviour
     public Label potionLabel;
     public List<Button> buttons = new List<Button>();
     public int currentSelection = 0;
+    public bool canPause = true;
 
 
 
     void Awake()
     {
+
         mainMenuState = new UIMainMenuState(this);
         dialogueState = new UIDialogueState(this);
         questItemState = new UIQuestItemState(this);
+        victoryState = new UIVictoryState(this);
+        gameOverState = new UIGameOverState(this);
+        pauseState = new UIPauseState(this);
+        unpauseState = new UIUnpauseState(this);
+
 
         uIDocumentCmp = GetComponent<UIDocument>();
+        audioSourceCmp = GetComponent<AudioSource>();
         root = uIDocumentCmp.rootVisualElement;
         playerInfoContainer = root.Q<VisualElement>("player-info-container");
         mainMenuContainer = root.Q<VisualElement>("main-menu-container");
@@ -69,6 +85,8 @@ public class UIController : MonoBehaviour
         EventManager.OnChangePotionsCount += HandleChangePotionCount;
         EventManager.OnInitiateDialogue += HandleInitiateDialogue;
         EventManager.OnTreasureChestUnlocked += HandleTreasureChestUnlocked;
+        EventManager.OnVictory += HandleVictory;
+        EventManager.OnGameOver += HandleGameOver;
     }
 
     void OnDisable()
@@ -77,6 +95,8 @@ public class UIController : MonoBehaviour
         EventManager.OnChangePotionsCount -= HandleChangePotionCount;
         EventManager.OnInitiateDialogue -= HandleInitiateDialogue;
         EventManager.OnTreasureChestUnlocked -= HandleTreasureChestUnlocked;
+        EventManager.OnVictory -= HandleVictory;
+        EventManager.OnGameOver -= HandleGameOver;
 
 
     }
@@ -133,7 +153,27 @@ public class UIController : MonoBehaviour
         (currentState as UIQuestItemState).SetQuestItemLabel(item.itemName);
 
     }
+    private void HandleVictory()
+    {
+        currentState = victoryState;
+        currentState.EnterState();
 
+    }
 
+    private void HandleGameOver()
+    {
+        currentState = gameOverState;
+        currentState.EnterState();
+    }
+
+    public void HandlePause(InputAction.CallbackContext context)
+    {
+        if (!context.performed || !canPause)
+        {
+            return;
+        }
+        currentState = currentState == pauseState ? unpauseState : pauseState;
+        currentState.EnterState();
+    }
 
 }

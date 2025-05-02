@@ -27,6 +27,7 @@ namespace RPG.UI
             questItemText = questItemContainer.Q<Label>("quest-item-label");
 
             questItemContainer.style.display = DisplayStyle.Flex;
+            controller.canPause = false;
         }
 
         public override void SelectButton()
@@ -34,6 +35,7 @@ namespace RPG.UI
             questItemContainer.style.display = DisplayStyle.None;
             playerInputCmp.SwitchCurrentActionMap(Constants.GAMEPLAY_ACTION_MAP);
             EventManager.RaiseToggleUI(false);
+            controller.canPause = true;
         }
 
         public void SetQuestItemLabel(string name)

@@ -665,6 +665,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy Skeleton Boss
       objectReference: {fileID: 0}
+    - target: {fileID: 1657697107607792581, guid: e7aeca567016e4a44ab57e53862608b3, type: 3}
+      propertyPath: m_TagString
+      value: Boss
+      objectReference: {fileID: 0}
     - target: {fileID: 2140993235650985819, guid: e7aeca567016e4a44ab57e53862608b3, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

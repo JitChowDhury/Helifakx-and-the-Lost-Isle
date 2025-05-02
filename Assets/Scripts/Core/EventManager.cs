@@ -15,6 +15,8 @@ namespace RPG.Core
         public static event UnityAction<Collider, int> OnPortalEnter;
         public static event UnityAction<bool> OnToggleUI;
         public static event UnityAction<bool> OnCutsceneUpdated;
+        public static event UnityAction OnVictory;
+        public static event UnityAction OnGameOver;
 
         //================================================================================//
 
@@ -27,6 +29,8 @@ namespace RPG.Core
         public static void RaiseReward(RewardSO reward) => OnReward?.Invoke(reward);
         public static void RaisePortalEnter(Collider player, int sceneIndex) => OnPortalEnter?.Invoke(player, sceneIndex);
         public static void RaiseCutSceneUpdated(bool IsEnabled) => OnCutsceneUpdated?.Invoke(IsEnabled);
+        public static void RaiseVictory() => OnVictory?.Invoke();
+        public static void RaiseGameOver() => OnGameOver?.Invoke();
     }
 
 }

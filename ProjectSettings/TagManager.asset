@@ -9,6 +9,7 @@ TagManager:
   - Axe
   - Sword
   - NPCWithQuest
+  - Boss
   layers:
   - Default
   - TransparentFX

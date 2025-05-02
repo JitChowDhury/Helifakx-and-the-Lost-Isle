@@ -19,7 +19,7 @@ namespace RPG.Core
             colliderCmp.enabled = false;
 
             EventManager.RaisePortalEnter(other, nextSceneIndex);
-            SceneTransition.Initiate(nextSceneIndex);
+            StartCoroutine(SceneTransition.Initiate(nextSceneIndex));
         }
     }
 }

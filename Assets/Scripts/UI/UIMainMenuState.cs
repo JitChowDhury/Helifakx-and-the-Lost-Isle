@@ -32,12 +32,12 @@ public class UIMainMenuState : UIBaseState
         if (btn.name == "start-button")
         {
             PlayerPrefs.DeleteAll();
-            SceneTransition.Initiate(1);
+            controller.StartCoroutine(SceneTransition.Initiate(1));
 
         }
         else
         {
-            SceneTransition.Initiate(sceneIndex);
+            controller.StartCoroutine(SceneTransition.Initiate(sceneIndex));
         }
     }
 
