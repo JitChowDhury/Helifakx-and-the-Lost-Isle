@@ -41,6 +41,10 @@ namespace RPG.Quest
             if (!isInteractable || hasBeenOpened || !context.performed) return;
 
             EventManager.RaiseTresureChestUnlocked(questItem, true);
+            AudioSource audioSourceCmp = GetComponent<AudioSource>();
+            if (audioSourceCmp == null) return;
+            audioSourceCmp.Play();
+
             playerAnimator.SetTrigger(Constants.INTERACT_ANIMATOR_PARAM);
             animator.SetBool(Constants.IS_SHAKING_ANIMATOR_PARAM, false);
             hasBeenOpened = true;
