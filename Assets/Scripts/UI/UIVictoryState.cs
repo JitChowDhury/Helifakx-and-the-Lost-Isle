@@ -25,12 +25,13 @@ namespace RPG.UI
 
             controller.audioSourceCmp.clip = controller.VictoryAudio;
             controller.audioSourceCmp.Play();
+            controller.canPause = false;
         }
 
         public override void SelectButton()
         {
             PlayerPrefs.DeleteAll();
-           controller.StartCoroutine(SceneTransition.Initiate(0));
+            controller.StartCoroutine(SceneTransition.Initiate(0));
         }
     }
 }

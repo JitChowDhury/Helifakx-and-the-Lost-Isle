@@ -25,6 +25,7 @@ namespace RPG.UI
             gameOverContainer.style.display = DisplayStyle.Flex;
 
             controller.audioSourceCmp.PlayOneShot(controller.GameOverAudio);
+            controller.canPause = false;
 
         }
 

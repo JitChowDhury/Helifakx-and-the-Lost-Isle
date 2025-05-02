@@ -25,6 +25,7 @@ namespace RPG.UI
 
         public override void EnterState()
         {
+
             dialogueContainer = controller.root.Q<VisualElement>("dialogue-container");
             dialogueText = dialogueContainer.Q<Label>("dialogue-text");
             nextButton = dialogueContainer.Q<VisualElement>("dialogue-next-button");
@@ -34,6 +35,7 @@ namespace RPG.UI
 
             playerInputCmp = GameObject.FindGameObjectWithTag(Constants.GAMEMANAGER_TAG).GetComponent<PlayerInput>();
             playerInputCmp.SwitchCurrentActionMap(Constants.UI_ACTION_MAP);
+            controller.canPause = false;
 
         }
 
@@ -115,6 +117,7 @@ namespace RPG.UI
         {
             dialogueContainer.style.display = DisplayStyle.None;
             playerInputCmp.SwitchCurrentActionMap(Constants.GAMEPLAY_ACTION_MAP);
+            controller.canPause = true;
         }
 
         public void VerifyQuest()

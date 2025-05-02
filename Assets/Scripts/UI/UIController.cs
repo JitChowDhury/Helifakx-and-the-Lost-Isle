@@ -17,6 +17,8 @@ public class UIController : MonoBehaviour
     public UIQuestItemState questItemState;
     public UIVictoryState victoryState;
     public UIGameOverState gameOverState;
+    public UIPauseState pauseState;
+    public UIUnpauseState unpauseState;
     public AudioClip GameOverAudio;
     public AudioClip VictoryAudio;
     [NonSerialized] public AudioSource audioSourceCmp;
@@ -31,6 +33,7 @@ public class UIController : MonoBehaviour
     public Label potionLabel;
     public List<Button> buttons = new List<Button>();
     public int currentSelection = 0;
+    public bool canPause = true;
 
 
 
@@ -42,6 +45,8 @@ public class UIController : MonoBehaviour
         questItemState = new UIQuestItemState(this);
         victoryState = new UIVictoryState(this);
         gameOverState = new UIGameOverState(this);
+        pauseState = new UIPauseState(this);
+        unpauseState = new UIUnpauseState(this);
 
 
         uIDocumentCmp = GetComponent<UIDocument>();
@@ -161,6 +166,14 @@ public class UIController : MonoBehaviour
         currentState.EnterState();
     }
 
-
+    public void HandlePause(InputAction.CallbackContext context)
+    {
+        if (!context.performed || !canPause)
+        {
+            return;
+        }
+        currentState = currentState == pauseState ? unpauseState : pauseState;
+        currentState.EnterState();
+    }
 
 }
