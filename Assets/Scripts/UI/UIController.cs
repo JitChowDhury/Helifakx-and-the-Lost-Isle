@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using RPG.Core;
 using RPG.Quest;
@@ -16,6 +17,9 @@ public class UIController : MonoBehaviour
     public UIQuestItemState questItemState;
     public UIVictoryState victoryState;
     public UIGameOverState gameOverState;
+    public AudioClip GameOverAudio;
+    public AudioClip VictoryAudio;
+    [NonSerialized] public AudioSource audioSourceCmp;
 
     private UIDocument uIDocumentCmp;
     public VisualElement root;
@@ -32,6 +36,7 @@ public class UIController : MonoBehaviour
 
     void Awake()
     {
+
         mainMenuState = new UIMainMenuState(this);
         dialogueState = new UIDialogueState(this);
         questItemState = new UIQuestItemState(this);
@@ -40,6 +45,7 @@ public class UIController : MonoBehaviour
 
 
         uIDocumentCmp = GetComponent<UIDocument>();
+        audioSourceCmp = GetComponent<AudioSource>();
         root = uIDocumentCmp.rootVisualElement;
         playerInfoContainer = root.Q<VisualElement>("player-info-container");
         mainMenuContainer = root.Q<VisualElement>("main-menu-container");

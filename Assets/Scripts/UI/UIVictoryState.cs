@@ -22,6 +22,9 @@ namespace RPG.UI
                 Constants.UI_ACTION_MAP
             );
             victoryContainer.style.display = DisplayStyle.Flex;
+
+            controller.audioSourceCmp.clip = controller.VictoryAudio;
+            controller.audioSourceCmp.Play();
         }
 
         public override void SelectButton()
