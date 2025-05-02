@@ -31,7 +31,7 @@ namespace RPG.UI
         public override void SelectButton()
         {
             PlayerPrefs.DeleteAll();
-            SceneTransition.Initiate(0);
+            controller.StartCoroutine(SceneTransition.Initiate(0));
         }
     }
 }
